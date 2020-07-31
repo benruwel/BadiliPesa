@@ -2,13 +2,36 @@ package com.moringa.badilipesa;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    @BindView(R.id.buttonLogin) Button mButtonLogin;
+    @BindView(R.id.usernameText) EditText mUsernameText;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.currencies);
+        ButterKnife.bind(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(view == mButtonLogin) {
+            String username = mUsernameText.getText().toString();
+            Intent intent = new Intent(MainActivity.this, CurrenciesActivity.class);
+            intent.putExtra("username", username);
+            startActivity(intent);
+        }
     }
 }
