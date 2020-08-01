@@ -22,33 +22,48 @@
         android:id="@+id/conversionButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="40dp"
+        android:background="@color/colorPrimary"
         android:text="Convert"
         android:textAllCaps="false"
-        tools:layout_editor_absoluteX="241dp"
-        tools:layout_editor_absoluteY="116dp" />
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toEndOf="@+id/amountToConvert"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
         android:id="@+id/amountToConvert"
         android:layout_width="161dp"
         android:layout_height="47dp"
-        android:layout_marginStart="60dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="40dp"
         android:background="#FFFFFF"
         android:ems="10"
         android:inputType="numberDecimal"
-        app:layout_constraintEnd_toStartOf="@+id/conversionButton"
+        android:padding="10dp"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="118dp" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/convertedString"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.419" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Results:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/amountToConvert" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,6 +26,13 @@
             </meta-data>
         </activity>
 
+        <activity android:name=".ConverterActivity" android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.moringa.badilipesa.CurrenciesActivity">
+            </meta-data>
+        </activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

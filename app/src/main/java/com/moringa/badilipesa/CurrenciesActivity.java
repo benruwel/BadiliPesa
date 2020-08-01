@@ -2,7 +2,9 @@ package com.moringa.badilipesa;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -11,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class CurrenciesActivity extends AppCompatActivity {
+public class CurrenciesActivity extends AppCompatActivity implements View.OnClickListener {
 
     public String[] supportedCurrencies = new String[] {
             "AED: 3.67295",
@@ -44,6 +46,9 @@ public class CurrenciesActivity extends AppCompatActivity {
     @BindView(R.id.currenciesList)
     ListView mCurrenciesList;
 
+    @BindView(R.id.convertViewButton)
+    Button mConvertViewButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +61,14 @@ public class CurrenciesActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String username = intent.getStringExtra("username");
         mUsernameTextView.setText(String.format("Hello %s, here are the supported currencies", username));
+        mConvertViewButton.setOnClickListener(this);
     }
 
+    @Override
+    public void onClick(View view) {
+        if(view == mConvertViewButton) {
+            Intent intent = new Intent(CurrenciesActivity.this, ConverterActivity.class);
+            startActivity(intent);
+        }
+    }
 }
