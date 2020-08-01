@@ -47,7 +47,7 @@ public class CurrenciesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.currencies);
+        setContentView(R.layout.activity_currencies);
         ButterKnife.bind(this);
 
         ArrayAdapter currencies = new CurrenciesArrayAdapter(this, android.R.layout.simple_list_item_1 ,supportedCurrencies);
