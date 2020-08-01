@@ -3,6 +3,7 @@ package com.moringa.badilipesa;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,6 +41,9 @@ public class CurrenciesActivity extends AppCompatActivity {
     @BindView(R.id.usernameTextView)
     TextView mUsernameTextView;
 
+    @BindView(R.id.currenciesList)
+    ListView mCurrenciesList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +51,7 @@ public class CurrenciesActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         ArrayAdapter currencies = new CurrenciesArrayAdapter(this, android.R.layout.simple_list_item_1 ,supportedCurrencies);
+        mCurrenciesList.setAdapter(currencies);
 
         Intent intent = getIntent();
         String username = intent.getStringExtra("username");
