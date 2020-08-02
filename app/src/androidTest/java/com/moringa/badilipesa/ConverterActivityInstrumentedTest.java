@@ -18,30 +18,39 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 @RunWith(AndroidJUnit4.class)
 @LargeTest
-public class MainActivityInstrumentedTest {
+public class ConverterActivityInstrumentedTest {
 
     @Rule
-    public ActivityTestRule<MainActivity> activityTestRule =
-            new ActivityTestRule<>(MainActivity.class);
+    public ActivityTestRule<ConverterActivity> activityTestRule =
+            new ActivityTestRule<>(ConverterActivity.class);
 
     @Test
     public void validateEditText() {
-        onView(withId(R.id.usernameText)).perform(typeText("benruwel"))
-                .check(matches(withText("benruwel")));
+        onView(withId(R.id.amountToConvert)).perform(typeText("500"))
+                .check(matches(withText("500")));
     }
 
     @Test
-    public void usernameIsSentToCurrenciesAcitvity() {
-        String username = "benruwel";
-        onView(withId(R.id.usernameText)).perform(typeText(username)).perform(closeSoftKeyboard());
+    public void convertedAmountDisplayedCorrectly() {
+        String amountToConvert = "500";
+        onView(withId(R.id.amountToConvert)).perform(typeText("500")).perform(closeSoftKeyboard());
         try {
             Thread.sleep(250);
         } catch (InterruptedException e){
             System.out.println("got interrupted!");
         }
-        onView(withId(R.id.buttonLogin)).perform(click());
-        onView(withId(R.id.usernameTextView)).check(matches(
-                withText(String.format("Hello %s, here are the supported currencies", username))
+        onView(withId(R.id.conversionButton)).perform(click());
+        onView(withId(R.id.convertedString)).check(matches(
+                withText(String.format("To KSH %s", amountToConvert))
         ));
     }
 }
+
+
+
+
+
+
+
+
+
