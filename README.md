@@ -10,7 +10,7 @@
   <h3 align="center">BadiliPesa</h3>
 
   <p align="center">
-    On stop for everything currency conversion!
+    One stop for everything currency conversion!
 </p>
 <p align="center">Ben Ruwel</p>
 
