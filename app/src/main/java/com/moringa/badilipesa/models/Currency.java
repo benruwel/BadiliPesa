@@ -1,7 +1,10 @@
 package com.moringa.badilipesa.models;
 
+import org.parceler.Parcel;
+
 import java.util.List;
 
+@Parcel
 public class Currency {
 
     private String name;
