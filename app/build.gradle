@@ -42,14 +42,21 @@ dependencies {
     androidTestImplementation 'androidx.test:rules:1.2.0'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-
     //robolectric dep
     testImplementation 'org.robolectric:robolectric:4.2.1'
-
     //espresso
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
     //butter knife
     implementation 'com.jakewharton:butterknife:10.2.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
+    //retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    //recylcerview
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    //picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    //parceler
+    implementation 'org.parceler:parceler-api:1.1.12'
+    annotationProcessor 'org.parceler:parceler:1.1.12'
 }
