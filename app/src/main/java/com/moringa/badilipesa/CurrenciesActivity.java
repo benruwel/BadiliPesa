@@ -15,6 +15,7 @@ import butterknife.ButterKnife;
 
 public class CurrenciesActivity extends AppCompatActivity implements View.OnClickListener {
 
+    //reference for the currencies list
     public String[] supportedCurrencies = new String[] {
             "AED: 3.67295",
             "AFN: 76.7",
