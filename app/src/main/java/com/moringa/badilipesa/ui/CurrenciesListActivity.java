@@ -6,52 +6,48 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.moringa.badilipesa.adapters.CurrenciesArrayAdapter;
 import com.moringa.badilipesa.R;
+import com.moringa.badilipesa.adapters.CurrenciesListAdapter;
+import com.moringa.badilipesa.models.Currency;
+import com.moringa.badilipesa.models.SupportedRatesResponse;
+import com.moringa.badilipesa.network.CurrencyExApi;
+import com.moringa.badilipesa.network.CurrencyExClient;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CurrenciesListActivity extends AppCompatActivity implements View.OnClickListener {
-
-    //reference for the currencies list
-    public String[] supportedCurrencies = new String[] {
-            "AED: 3.67295",
-            "AFN: 76.7",
-            "ALL: 105.3",
-            "AMD: 485.33",
-            "ANG: 1.795763",
-            "AOA: 576.975",
-            "ARS: 72.3764",
-            "AUD: 1.399805",
-            "AWG: 1.8",
-            "AZN: 1.7",
-            "BAM: 1.651305",
-            "BBD: 2.003622",
-            "BDT: 84.82762",
-            "BGN: 1.653791",
-            "BHD: 0.3769837",
-            "BIF: 1927.5",
-            "BMD: 1",
-            "BND: 1.372204",
-            "BOB: 6.913053",
-            "BRL: 5.22265",
-            "BSD: 1.00046",
-            "BTN: 74.735",
-    };
 
     @BindView(R.id.usernameTextView)
     TextView mUsernameTextView;
 
-    @BindView(R.id.currenciesList)
-    ListView mCurrenciesList;
-
     @BindView(R.id.convertViewButton)
     Button mConvertViewButton;
+
+    @BindView(R.id.recyclerView)
+    RecyclerView mCurrenciesList;
+
+    @BindView(R.id.progressBar)
+    ProgressBar mProgressBar;
+
+    @BindView(R.id.errorTextView)
+    TextView mErrorTextView;
+
+    private CurrenciesListAdapter mAdapter;
+    public List<Currency> currencies;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,13 +55,57 @@ public class CurrenciesListActivity extends AppCompatActivity implements View.On
         setContentView(R.layout.activity_currencies);
         ButterKnife.bind(this);
 
-        ArrayAdapter currencies = new CurrenciesArrayAdapter(this, android.R.layout.simple_list_item_1 ,supportedCurrencies);
-        mCurrenciesList.setAdapter(currencies);
-
         Intent intent = getIntent();
         String username = intent.getStringExtra("username");
         mUsernameTextView.setText(String.format("Hello %s, here are the supported currencies", username));
         mConvertViewButton.setOnClickListener(this);
+
+        //api calls
+        CurrencyExApi client = CurrencyExClient.getClient();
+        Call<SupportedRatesResponse> call = client.getCurrencies("USD");
+
+        call.enqueue(new Callback<SupportedRatesResponse>() {
+            @Override
+            public void onResponse(Call<SupportedRatesResponse> call, Response<SupportedRatesResponse> response) {
+                hideProgressBar();
+
+                if(response.isSuccessful()) {
+                    currencies = response.body().getCurerncies();
+                    mAdapter = new CurrenciesListAdapter(currencies,CurrenciesListActivity.this);
+                    mCurrenciesList.setAdapter(mAdapter);
+                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(CurrenciesListActivity.this);
+                    mCurrenciesList.setLayoutManager(layoutManager);
+                    mCurrenciesList.setHasFixedSize(true);
+
+                    showCurrencies();
+                } else {
+                    showUnsuccessfulMessage();
+                }
+            }
+            @Override
+            public void onFailure(Call<SupportedRatesResponse> call, Throwable t) {
+                hideProgressBar();
+                showFailureMessage();
+            }
+        });
+    }
+
+    private void showFailureMessage() {
+        mErrorTextView.setText("Something went wrong. Please check your Internet connection and try again later");
+        mErrorTextView.setVisibility(View.VISIBLE);
+    }
+
+    private void showUnsuccessfulMessage() {
+        mErrorTextView.setText("Something went wrong. Please try again later");
+        mErrorTextView.setVisibility(View.VISIBLE);
+    }
+
+    private void showCurrencies() {
+        mCurrenciesList.setVisibility(View.VISIBLE);
+    }
+
+    private void hideProgressBar() {
+        mProgressBar.setVisibility(View.GONE);
     }
 
     @Override

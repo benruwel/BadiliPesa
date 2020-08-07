@@ -10,11 +10,11 @@ public interface CurrencyExApi {
 
     //define your api operations here
     @GET("rates")
-    Call<SupportedRatesResponse> getRestaurants(
+    Call<SupportedRatesResponse> getCurrencies(
             //specify the source currency
-            @Query("source") String source,
+            @Query("source") String source
             //specify the source currency
-            @Query("target") String target
+            //@Query("target") String target
     );
 
 }
