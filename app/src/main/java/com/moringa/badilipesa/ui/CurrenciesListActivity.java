@@ -16,7 +16,7 @@ import com.moringa.badilipesa.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class CurrenciesActivity extends AppCompatActivity implements View.OnClickListener {
+public class CurrenciesListActivity extends AppCompatActivity implements View.OnClickListener {
 
     //reference for the currencies list
     public String[] supportedCurrencies = new String[] {
@@ -71,7 +71,7 @@ public class CurrenciesActivity extends AppCompatActivity implements View.OnClic
     @Override
     public void onClick(View view) {
         if(view == mConvertViewButton) {
-            Intent intent = new Intent(CurrenciesActivity.this, ConverterActivity.class);
+            Intent intent = new Intent(CurrenciesListActivity.this, ConverterActivity.class);
             startActivity(intent);
         }
     }

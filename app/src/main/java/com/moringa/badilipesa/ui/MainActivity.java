@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         if(view == mButtonLogin) {
             String username = mUsernameText.getText().toString();
-            Intent intent = new Intent(MainActivity.this, CurrenciesActivity.class);
+            Intent intent = new Intent(MainActivity.this, CurrenciesListActivity.class);
             intent.putExtra("username", username);
             startActivity(intent);
         }
