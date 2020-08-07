@@ -1,14 +1,14 @@
 package com.moringa.badilipesa;
 
-import android.content.Intent;
 import android.widget.TextView;
+
+import com.moringa.badilipesa.ui.ConverterActivity;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.shadows.ShadowActivity;
 
 import static org.junit.Assert.*;
 

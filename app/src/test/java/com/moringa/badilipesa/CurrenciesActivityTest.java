@@ -1,6 +1,8 @@
 package com.moringa.badilipesa;
 import android.content.Intent;
-import android.widget.TextView;
+
+import com.moringa.badilipesa.ui.ConverterActivity;
+import com.moringa.badilipesa.ui.CurrenciesActivity;
 
 import org.junit.Before;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package com.moringa.badilipesa;
+package com.moringa.badilipesa.ui;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -8,6 +8,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.moringa.badilipesa.R;
 
 import java.text.NumberFormat;
 

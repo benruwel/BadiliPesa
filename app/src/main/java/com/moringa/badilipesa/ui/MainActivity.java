@@ -1,4 +1,4 @@
-package com.moringa.badilipesa;
+package com.moringa.badilipesa.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import android.os.Bundle;
+
+import com.moringa.badilipesa.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 

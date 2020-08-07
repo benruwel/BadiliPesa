@@ -1,4 +1,4 @@
-package com.moringa.badilipesa;
+package com.moringa.badilipesa.adapters;
 
 import android.content.Context;
 import android.widget.ArrayAdapter;

@@ -3,6 +3,9 @@ package com.moringa.badilipesa;
 import android.content.Intent;
 import android.widget.TextView;
 
+import com.moringa.badilipesa.ui.CurrenciesActivity;
+import com.moringa.badilipesa.ui.MainActivity;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
