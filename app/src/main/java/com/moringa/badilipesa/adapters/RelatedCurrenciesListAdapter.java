@@ -1,11 +1,9 @@
 package com.moringa.badilipesa.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,36 +16,33 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.moringa.badilipesa.R;
-import com.moringa.badilipesa.ui.CurrenciesListActivity;
-import com.squareup.picasso.Picasso;
+import com.moringa.badilipesa.models.CurrencyPair;
 
-import org.parceler.Parcels;
+public class RelatedCurrenciesListAdapter extends RecyclerView.Adapter<RelatedCurrenciesListAdapter.CurrenciesViewHolder> {
 
-public class CurrenciesListAdapter extends RecyclerView.Adapter<CurrenciesListAdapter.CurrenciesViewHolder> {
-
-    private Map<String, Currency> mCurrencies;
+    private List<CurrencyPair> currencyPairList;
     private Context mContext;
 
-    public CurrenciesListAdapter(Map<String, Currency> mCurrencies, Context mContext) {
-        this.mCurrencies = mCurrencies;
+    public RelatedCurrenciesListAdapter(List<CurrencyPair> currencyPairList, Context mContext) {
+        this.currencyPairList = currencyPairList;
         this.mContext = mContext;
     }
 
     @Override
-    public CurrenciesListAdapter.CurrenciesViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RelatedCurrenciesListAdapter.CurrenciesViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.currency_list_item, parent, false);
         CurrenciesViewHolder viewHolder = new CurrenciesViewHolder(view);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(CurrenciesListAdapter.CurrenciesViewHolder holder, int position) {
-        holder.bindCurrency(mCurrencies.get(position));
+    public void onBindViewHolder(RelatedCurrenciesListAdapter.CurrenciesViewHolder holder, int position) {
+        holder.bindCurrency(currencyPairList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return mCurrencies.size();
+        return currencyPairList.size();
     }
 
     public class CurrenciesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -65,9 +60,9 @@ public class CurrenciesListAdapter extends RecyclerView.Adapter<CurrenciesListAd
             mContext = itemView.getContext();
         }
 
-        public void bindCurrency(Currency currency) {
-            mCurrencySymbol.setText(currency.getSymbol());
-            mCurrencyName.setText(currency.getName());
+        public void bindCurrency(CurrencyPair currencyPair) {
+            mCurrencySymbol.setText(currencyPair.getSymbol());
+            mCurrencyName.setText(currencyPair.getName());
         }
 
         @Override

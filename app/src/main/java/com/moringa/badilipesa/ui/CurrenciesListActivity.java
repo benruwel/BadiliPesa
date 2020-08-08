@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.moringa.badilipesa.R;
-import com.moringa.badilipesa.adapters.CurrenciesListAdapter;
+import com.moringa.badilipesa.adapters.RelatedCurrenciesListAdapter;
 import com.moringa.badilipesa.models.Currency;
 import com.moringa.badilipesa.models.SupportedRatesResponse;
 import com.moringa.badilipesa.network.CurrencyExApi;
@@ -44,7 +44,7 @@ public class CurrenciesListActivity extends AppCompatActivity implements View.On
     @BindView(R.id.errorTextView)
     TextView mErrorTextView;
 
-    private CurrenciesListAdapter mAdapter;
+    private RelatedCurrenciesListAdapter mAdapter;
     public List<Currency> currencies;
     public Map<String, Currency> currencyItem;
 
@@ -70,7 +70,7 @@ public class CurrenciesListActivity extends AppCompatActivity implements View.On
 
                 if(response.isSuccessful()) {
                     currencyItem = response.body().getCurerncies();
-                    mAdapter = new CurrenciesListAdapter(currencyItem,CurrenciesListActivity.this);
+                    mAdapter = new RelatedCurrenciesListAdapter(currencyItem,CurrenciesListActivity.this);
                     mCurrenciesList.setAdapter(mAdapter);
                     RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(CurrenciesListActivity.this);
                     mCurrenciesList.setLayoutManager(layoutManager);
