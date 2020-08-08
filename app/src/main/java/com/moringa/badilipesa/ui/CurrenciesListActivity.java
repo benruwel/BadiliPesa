@@ -38,6 +38,7 @@ public class CurrenciesListActivity extends AppCompatActivity implements View.On
     @BindView(R.id.recyclerView)
     RecyclerView mCurrenciesList;
 
+
     @BindView(R.id.progressBar)
     ProgressBar mProgressBar;
 

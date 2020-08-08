@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @BindView(R.id.buttonLogin) Button mButtonLogin;
     @BindView(R.id.usernameText) EditText mUsernameText;
+    @BindView(R.id.currencySymbolInput) EditText mCurrencySymbol;
 
 
     @Override
@@ -33,8 +34,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         if(view == mButtonLogin) {
             String username = mUsernameText.getText().toString();
+            String currencySymbol = mCurrencySymbol.getText().toString();
             Intent intent = new Intent(MainActivity.this, CurrenciesListActivity.class);
             intent.putExtra("username", username);
+            intent.putExtra("currencySymbol", currencySymbol);
             startActivity(intent);
         }
     }

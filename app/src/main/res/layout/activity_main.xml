@@ -19,7 +19,7 @@
         app:srcCompat="@drawable/icons8_cash_100" />
 
     <EditText
-        android:id="@+id/usernameText2"
+        android:id="@+id/usernameText"
         style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
         android:layout_width="150dp"
         android:layout_height="50dp"
@@ -31,7 +31,7 @@
         android:singleLine="false"
         android:textColor="@color/colorPrimary"
         android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@+id/currencySymbol"
+        app:layout_constraintEnd_toStartOf="@+id/currencySymbolInput"
         app:layout_constraintHorizontal_bias="0.731"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
@@ -48,7 +48,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usernameText2" />
+        app:layout_constraintTop_toBottomOf="@+id/usernameText" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -78,7 +78,7 @@
         app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
 
     <EditText
-        android:id="@+id/currencySymbol"
+        android:id="@+id/currencySymbolInput"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="50dp"
