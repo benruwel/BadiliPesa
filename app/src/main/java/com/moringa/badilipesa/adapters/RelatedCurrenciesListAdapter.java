@@ -46,8 +46,10 @@ public class RelatedCurrenciesListAdapter extends RecyclerView.Adapter<RelatedCu
 
         @BindView(R.id.currencySymbol)
         TextView mCurrencySymbol;
-        @BindView(R.id.currencyName)
-        TextView mCurrencyName;
+        @BindView(R.id.currencyPrice)
+        TextView mCurrencyPrice;
+        @BindView(R.id.currencyChange)
+        TextView mCurrencyChange;
 
         private Context mContext;
 
@@ -59,7 +61,8 @@ public class RelatedCurrenciesListAdapter extends RecyclerView.Adapter<RelatedCu
 
         public void bindCurrency(CurrencyPair currencyPair) {
             mCurrencySymbol.setText(currencyPair.getSymbol());
-            mCurrencyName.setText(currencyPair.getName());
+            mCurrencyPrice.setText(String.format("Price:%s", currencyPair.getPrice()));
+            mCurrencyChange.setText(String.format("Change:%s", currencyPair.getChange()));
         }
 
         @Override

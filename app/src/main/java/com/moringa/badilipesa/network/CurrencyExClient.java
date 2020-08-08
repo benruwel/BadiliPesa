@@ -18,7 +18,7 @@ public class CurrencyExClient {
             OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
 
             retrofit = new Retrofit.Builder()
-                    .baseUrl(Constants.CURENCYEX_BASE_URL) //used to append the endpoints that we define in the network interface
+                    .baseUrl(Constants.FOREX_BASE_URL) //used to append the endpoints that we define in the network interface
                     .client(okHttpClient)
                     .addConverterFactory(GsonConverterFactory.create()) //enables serialization of JSON objects to our models' objects
                     .build();
