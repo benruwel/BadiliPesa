@@ -14,9 +14,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.moringa.badilipesa.R;
 import com.moringa.badilipesa.adapters.RelatedCurrenciesListAdapter;
 import com.moringa.badilipesa.models.Currency;
+import com.moringa.badilipesa.models.CurrencyPair;
+import com.moringa.badilipesa.models.RelatedCurrenciesApiResponse;
 import com.moringa.badilipesa.models.SupportedRatesResponse;
 import com.moringa.badilipesa.network.CurrencyExApi;
 import com.moringa.badilipesa.network.CurrencyExClient;
+import com.moringa.badilipesa.util.Constants;
 
 import java.util.List;
 import java.util.Map;
@@ -27,7 +30,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CurrenciesListActivity extends AppCompatActivity implements View.OnClickListener {
+public class RelatedCurrenciesListActivity extends AppCompatActivity implements View.OnClickListener {
 
     @BindView(R.id.usernameTextView)
     TextView mUsernameTextView;
@@ -38,7 +41,6 @@ public class CurrenciesListActivity extends AppCompatActivity implements View.On
     @BindView(R.id.recyclerView)
     RecyclerView mCurrenciesList;
 
-
     @BindView(R.id.progressBar)
     ProgressBar mProgressBar;
 
@@ -46,8 +48,8 @@ public class CurrenciesListActivity extends AppCompatActivity implements View.On
     TextView mErrorTextView;
 
     private RelatedCurrenciesListAdapter mAdapter;
-    public List<Currency> currencies;
-    public Map<String, Currency> currencyItem;
+    //create a list variable to hold all the currency pairs from the api call
+    public List<CurrencyPair> mCurrencyPairs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,23 +59,26 @@ public class CurrenciesListActivity extends AppCompatActivity implements View.On
 
         Intent intent = getIntent();
         String username = intent.getStringExtra("username");
-        mUsernameTextView.setText(String.format("Hello %s, here are the supported currencies", username));
+        String currencySymbol = intent.getStringExtra("currencySymbol");
+        //display both username and currency symbol
+        mUsernameTextView.setText(String.format("Hello %s, here are the related currencies:%s", username, currencySymbol));
         mConvertViewButton.setOnClickListener(this);
 
         //api calls
         CurrencyExApi client = CurrencyExClient.getClient();
-        Call<SupportedRatesResponse> call = client.getCurrencies("USD");
+        //we add the api key to the parameter according to the Api Docs
+        Call<RelatedCurrenciesApiResponse> call = client.getRelatedCurrencies(currencySymbol, Constants.FOREX_API_KEY);
 
-        call.enqueue(new Callback<SupportedRatesResponse>() {
+        call.enqueue(new Callback<RelatedCurrenciesApiResponse>() {
             @Override
-            public void onResponse(Call<SupportedRatesResponse> call, Response<SupportedRatesResponse> response) {
+            public void onResponse(Call<RelatedCurrenciesApiResponse> call, Response<RelatedCurrenciesApiResponse> response) {
                 hideProgressBar();
 
                 if(response.isSuccessful()) {
-                    currencyItem = response.body().getCurerncies();
-                    mAdapter = new RelatedCurrenciesListAdapter(currencyItem,CurrenciesListActivity.this);
+                    mCurrencyPairs = response.body().getCurrencyPairs();
+                    mAdapter = new RelatedCurrenciesListAdapter(mCurrencyPairs, RelatedCurrenciesListActivity.this);
                     mCurrenciesList.setAdapter(mAdapter);
-                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(CurrenciesListActivity.this);
+                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(RelatedCurrenciesListActivity.this);
                     mCurrenciesList.setLayoutManager(layoutManager);
                     mCurrenciesList.setHasFixedSize(true);
 
@@ -83,7 +88,7 @@ public class CurrenciesListActivity extends AppCompatActivity implements View.On
                 }
             }
             @Override
-            public void onFailure(Call<SupportedRatesResponse> call, Throwable t) {
+            public void onFailure(Call<RelatedCurrenciesApiResponse> call, Throwable t) {
                 hideProgressBar();
                 showFailureMessage();
             }
@@ -111,7 +116,7 @@ public class CurrenciesListActivity extends AppCompatActivity implements View.On
     @Override
     public void onClick(View view) {
         if(view == mConvertViewButton) {
-            Intent intent = new Intent(CurrenciesListActivity.this, ConverterActivity.class);
+            Intent intent = new Intent(RelatedCurrenciesListActivity.this, ConverterActivity.class);
             startActivity(intent);
         }
     }

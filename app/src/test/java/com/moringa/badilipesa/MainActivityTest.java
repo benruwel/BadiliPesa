@@ -3,7 +3,7 @@ package com.moringa.badilipesa;
 import android.content.Intent;
 import android.widget.TextView;
 
-import com.moringa.badilipesa.ui.CurrenciesListActivity;
+import com.moringa.badilipesa.ui.RelatedCurrenciesListActivity;
 import com.moringa.badilipesa.ui.MainActivity;
 
 import org.junit.Before;
@@ -34,7 +34,7 @@ public class MainActivityTest {
     @Test
     public void currenciesActivityStarted() {
         activity.findViewById(R.id.buttonLogin).performClick();
-        Intent expectedIntent = new Intent(activity, CurrenciesListActivity.class);
+        Intent expectedIntent = new Intent(activity, RelatedCurrenciesListActivity.class);
         ShadowActivity shadowActivity = org.robolectric.Shadows.shadowOf(activity);
         Intent actualIntent = shadowActivity.getNextStartedActivity();
         assertTrue(actualIntent.filterEquals(expectedIntent));

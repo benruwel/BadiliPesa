@@ -34,7 +34,6 @@ public class RelatedCurrenciesApiResponse {
      *
      * @param msg
      * @param code
-     * @param response
      * @param status
      */
     public RelatedCurrenciesApiResponse(Boolean status, Integer code, String msg, List<CurrencyPair> currencyPairs) {
@@ -69,11 +68,11 @@ public class RelatedCurrenciesApiResponse {
         this.msg = msg;
     }
 
-    public List<Response> getResponse() {
-        return response;
+    public List<CurrencyPair> getCurrencyPairs() {
+        return currencyPairs;
     }
 
-    public void setResponse(List<Response> response) {
-        this.response = response;
+    public void setCurrencyPairs(List<CurrencyPair> currencyPairs) {
+        this.currencyPairs = currencyPairs;
     }
 }

@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(view == mButtonLogin) {
             String username = mUsernameText.getText().toString();
             String currencySymbol = mCurrencySymbol.getText().toString();
-            Intent intent = new Intent(MainActivity.this, CurrenciesListActivity.class);
+            Intent intent = new Intent(MainActivity.this, RelatedCurrenciesListActivity.class);
             intent.putExtra("username", username);
             intent.putExtra("currencySymbol", currencySymbol);
             startActivity(intent);
