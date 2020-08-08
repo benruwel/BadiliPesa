@@ -13,7 +13,7 @@ public class ConvertCurrencyApiResponse {
     private Query query;
     @SerializedName("info")
     @Expose
-    private Info info;
+    private CurrencyInfo info;
     @SerializedName("date")
     @Expose
     private String date;
@@ -36,7 +36,7 @@ public class ConvertCurrencyApiResponse {
      * @param query
      * @param info
      */
-    public ConvertCurrencyApiResponse(Boolean success, Query query, Info info, String date, Double result) {
+    public ConvertCurrencyApiResponse(Boolean success, Query query, CurrencyInfo info, String date, Double result) {
         super();
         this.success = success;
         this.query = query;
@@ -61,11 +61,11 @@ public class ConvertCurrencyApiResponse {
         this.query = query;
     }
 
-    public Info getInfo() {
+    public CurrencyInfo getInfo() {
         return info;
     }
 
-    public void setInfo(Info info) {
+    public void setInfo(CurrencyInfo info) {
         this.info = info;
     }
 
