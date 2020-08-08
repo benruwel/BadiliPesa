@@ -80,9 +80,10 @@ public class RelatedCurrenciesListActivity extends AppCompatActivity implements 
                     mCurrenciesList.setAdapter(mAdapter);
                     RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(RelatedCurrenciesListActivity.this);
                     mCurrenciesList.setLayoutManager(layoutManager);
-                    mCurrenciesList.setHasFixedSize(true);
+//                    mCurrenciesList.setHasFixedSize(true);
 
                     showCurrencies();
+                    showConvertViewButton();
                 } else {
                     showUnsuccessfulMessage();
                 }
@@ -107,6 +108,10 @@ public class RelatedCurrenciesListActivity extends AppCompatActivity implements 
 
     private void showCurrencies() {
         mCurrenciesList.setVisibility(View.VISIBLE);
+    }
+
+    private void showConvertViewButton() {
+        mConvertViewButton.setVisibility(View.VISIBLE);
     }
 
     private void hideProgressBar() {

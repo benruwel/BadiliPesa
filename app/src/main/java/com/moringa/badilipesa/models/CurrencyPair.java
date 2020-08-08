@@ -3,6 +3,9 @@ package com.moringa.badilipesa.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class CurrencyPair {
     @SerializedName("id")
     @Expose
