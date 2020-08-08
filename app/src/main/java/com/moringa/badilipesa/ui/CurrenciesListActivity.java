@@ -51,7 +51,7 @@ public class CurrenciesListActivity extends AppCompatActivity implements View.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_currencies);
+        setContentView(R.layout.activity_related_currencies);
         ButterKnife.bind(this);
 
         Intent intent = getIntent();

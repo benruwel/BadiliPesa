@@ -8,10 +8,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.moringa.badilipesa.models.Currency;
-
 import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,7 +27,7 @@ public class RelatedCurrenciesListAdapter extends RecyclerView.Adapter<RelatedCu
 
     @Override
     public RelatedCurrenciesListAdapter.CurrenciesViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.currency_list_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.currencypair_list_item, parent, false);
         CurrenciesViewHolder viewHolder = new CurrenciesViewHolder(view);
         return viewHolder;
     }
