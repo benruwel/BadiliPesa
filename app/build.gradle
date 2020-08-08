@@ -27,7 +27,7 @@ android {
         }
     }
     buildTypes.each {
-        it.buildConfigField 'String', 'CURRENCYEX_API_KEY', CurencyExApiKey
+        it.buildConfigField 'String', 'FOREX_API_KEY', ForexApiKey
     }
 }
 

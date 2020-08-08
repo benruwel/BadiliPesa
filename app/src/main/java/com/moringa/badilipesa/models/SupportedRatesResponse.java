@@ -6,13 +6,14 @@ import com.google.gson.annotations.SerializedName;
 import org.parceler.Parcel;
 
 import java.util.List;
+import java.util.Map;
 
 @Parcel
 public class SupportedRatesResponse {
 
     @SerializedName("mCurerncies")
     @Expose
-    private List<Currency> mCurerncies;
+    private Map<String, Currency> mCurerncies;
 
     /**
      * No args constructor for use in serialization
@@ -21,15 +22,15 @@ public class SupportedRatesResponse {
     public SupportedRatesResponse() {
     }
 
-    public SupportedRatesResponse(List<Currency> currencies) {
+    public SupportedRatesResponse(Map<String, Currency> currencies) {
         this.mCurerncies = currencies;
     }
 
-    public List<Currency> getCurerncies() {
+    public Map<String, Currency> getCurerncies() {
         return mCurerncies;
     }
 
-    public void setCurerncies(List<Currency> mCurerncies) {
-        this.mCurerncies = mCurerncies;
+    public void setCurerncies(Map<String, Currency> currencies) {
+        this.mCurerncies = currencies;
     }
 }

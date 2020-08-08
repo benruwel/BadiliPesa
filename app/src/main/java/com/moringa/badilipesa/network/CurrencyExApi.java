@@ -9,12 +9,13 @@ import retrofit2.http.Query;
 public interface CurrencyExApi {
 
     //define your api operations here
-    @GET("rates")
-    Call<SupportedRatesResponse> getCurrencies(
-            //specify the source currency
-            @Query("source") String source
-            //specify the source currency
-            //@Query("target") String target
+    //Return all related currencies of required currency
+    @GET("cross")
+    Call<SupportedRatesResponse> getRelatedCurrencies(
+            //specify the source currency symbol such as KES/USD/EUR
+            @Query("symbol") String symbol,
+            //this api requires the api key to be present in the query params
+            @Query("access_key") String access_key
     );
 
 }

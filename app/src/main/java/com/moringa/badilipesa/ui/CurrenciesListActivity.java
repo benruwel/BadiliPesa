@@ -3,9 +3,7 @@ package com.moringa.badilipesa.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -13,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.moringa.badilipesa.adapters.CurrenciesArrayAdapter;
 import com.moringa.badilipesa.R;
 import com.moringa.badilipesa.adapters.CurrenciesListAdapter;
 import com.moringa.badilipesa.models.Currency;
@@ -22,6 +19,7 @@ import com.moringa.badilipesa.network.CurrencyExApi;
 import com.moringa.badilipesa.network.CurrencyExClient;
 
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -48,6 +46,7 @@ public class CurrenciesListActivity extends AppCompatActivity implements View.On
 
     private CurrenciesListAdapter mAdapter;
     public List<Currency> currencies;
+    public Map<String, Currency> currencyItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,8 +69,8 @@ public class CurrenciesListActivity extends AppCompatActivity implements View.On
                 hideProgressBar();
 
                 if(response.isSuccessful()) {
-                    currencies = response.body().getCurerncies();
-                    mAdapter = new CurrenciesListAdapter(currencies,CurrenciesListActivity.this);
+                    currencyItem = response.body().getCurerncies();
+                    mAdapter = new CurrenciesListAdapter(currencyItem,CurrenciesListActivity.this);
                     mCurrenciesList.setAdapter(mAdapter);
                     RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(CurrenciesListActivity.this);
                     mCurrenciesList.setLayoutManager(layoutManager);

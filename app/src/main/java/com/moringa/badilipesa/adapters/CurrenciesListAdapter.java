@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.moringa.badilipesa.models.Currency;
 
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,10 +25,10 @@ import org.parceler.Parcels;
 
 public class CurrenciesListAdapter extends RecyclerView.Adapter<CurrenciesListAdapter.CurrenciesViewHolder> {
 
-    private List<Currency> mCurrencies;
+    private Map<String, Currency> mCurrencies;
     private Context mContext;
 
-    public CurrenciesListAdapter(List<Currency> mCurrencies, Context mContext) {
+    public CurrenciesListAdapter(Map<String, Currency> mCurrencies, Context mContext) {
         this.mCurrencies = mCurrencies;
         this.mContext = mContext;
     }
@@ -50,6 +51,7 @@ public class CurrenciesListAdapter extends RecyclerView.Adapter<CurrenciesListAd
     }
 
     public class CurrenciesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
         @BindView(R.id.currencySymbol)
         TextView mCurrencySymbol;
         @BindView(R.id.currencyName)
