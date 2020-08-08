@@ -3,6 +3,11 @@ package com.moringa.badilipesa.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
+import java.util.List;
+
+@Parcel
 public class RelatedCurrenciesApiResponse {
 
     @SerializedName("status")
@@ -16,7 +21,7 @@ public class RelatedCurrenciesApiResponse {
     private String msg;
     @SerializedName("response")
     @Expose
-    private List<Response> response = null;
+    private List<CurrencyPair> currencyPairs = null;
 
     /**
      * No args constructor for use in serialization
@@ -32,12 +37,12 @@ public class RelatedCurrenciesApiResponse {
      * @param response
      * @param status
      */
-    public RelatedCurrenciesApiResponse(Boolean status, Integer code, String msg, List<Response> response) {
+    public RelatedCurrenciesApiResponse(Boolean status, Integer code, String msg, List<CurrencyPair> currencyPairs) {
         super();
         this.status = status;
         this.code = code;
         this.msg = msg;
-        this.response = response;
+        this.currencyPairs = currencyPairs;
     }
 
     public Boolean getStatus() {
