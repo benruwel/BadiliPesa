@@ -18,14 +18,14 @@ import butterknife.ButterKnife;
 
 public class ConverterActivity extends AppCompatActivity implements View.OnClickListener {
 
-    @BindView(R.id.amountToConvert)
-    EditText mAmountToConvert;
-
+    @BindView(R.id.fromEditView)
+    EditText fromEditView;
+    @BindView(R.id.toEditView)
+    EditText toEditView;
+    @BindView(R.id.amountEditView)
+    EditText amountEditView;
     @BindView(R.id.conversionButton)
-    Button mConversionButton;
-
-    @BindView(R.id.convertedString)
-    TextView mConvertedString;
+    Button conversionButton;
 
     @Override
     protected void onCreate(Bundle savedInstance) {
@@ -33,14 +33,14 @@ public class ConverterActivity extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_converter);
         ButterKnife.bind(this);
 
-        mConversionButton.setOnClickListener(this);
+//        mConversionButton.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        if(view == mConversionButton) {
-            String convertedAmountString = mAmountToConvert.getText().toString();
-            mConvertedString.setText(String.format("To KSH %s", convertedAmountString));
-        }
+//        if(view == mConversionButton) {
+////            String convertedAmountString = mAmountToConvert.getText().toString();
+////            mConvertedString.setText(String.format("To KSH %s", convertedAmountString));
+//        }
     }
 }

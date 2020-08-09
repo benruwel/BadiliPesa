@@ -28,14 +28,14 @@ public class ConverterActivityInstrumentedTest {
 
     @Test
     public void validateEditText() {
-        onView(withId(R.id.amountToConvert)).perform(typeText("500"))
+        onView(withId(R.id.toView)).perform(typeText("500"))
                 .check(matches(withText("500")));
     }
 
     @Test
     public void convertedAmountDisplayedCorrectly() {
         String amountToConvert = "500";
-        onView(withId(R.id.amountToConvert)).perform(typeText("500")).perform(closeSoftKeyboard());
+        onView(withId(R.id.toView)).perform(typeText("500")).perform(closeSoftKeyboard());
         try {
             Thread.sleep(250);
         } catch (InterruptedException e){
