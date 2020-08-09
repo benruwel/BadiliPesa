@@ -27,7 +27,7 @@ public class Rates {
         this.convertedAmount = convertedAmount;
     }
 
-    public Double getUSD() {
+    public Double getConvertedAmount() {
         return convertedAmount;
     }
 

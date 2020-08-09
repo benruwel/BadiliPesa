@@ -1,6 +1,6 @@
 package com.moringa.badilipesa.network;
 
-import com.moringa.badilipesa.models.RelatedCurrenciesApiResponse;
+import com.moringa.badilipesa.models.ConvertCurrencyApiResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -10,7 +10,7 @@ public interface ConversionApi {
     //define your api operations here
     //currency conversion is facilitated by providing the variables in the parameters
     @GET("latest")
-    Call<RelatedCurrenciesApiResponse> getRelatedCurrencies(
+    Call<ConvertCurrencyApiResponse> getConversionResults(
             //specify the source amount to convert
             @Query("amount") String amount,
             //specify the currency symbol to convert 'from' such as KES/USD/EUR
