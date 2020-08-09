@@ -53,16 +53,16 @@ public class ConverterActivity extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View view) {
         if(view == conversionButton) {
-            ConversionApi client = ConversionClient.getClient();
             String fromSymbolString = fromEditView.getText().toString();
             String toSymbolString = toEditView.getText().toString();
             String amountToConvert = amountEditView.getText().toString();
+            ConversionApi client = ConversionClient.getClient();
             Call<ConvertCurrencyApiResponse> call = client.getConversionResults(amountToConvert, fromSymbolString, toSymbolString );
             call.enqueue(new Callback<ConvertCurrencyApiResponse>() {
                 @Override
                 public void onResponse(Call<ConvertCurrencyApiResponse> call, Response<ConvertCurrencyApiResponse> response) {
                     if(response.isSuccessful()) {
-                        amountToConvertView.setText(amountToConvert);
+                        amountToConvertView.setText(response.body().getAmount().toString());
                         convertedRate = response.body().getRates();
                         convertedAmountView.setText(convertedRate.getConvertedAmount().toString());
                     }
