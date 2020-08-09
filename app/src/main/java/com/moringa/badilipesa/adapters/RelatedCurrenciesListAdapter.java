@@ -13,6 +13,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.moringa.badilipesa.R;
+import com.moringa.badilipesa.models.CurrencyPair;
 
 public class RelatedCurrenciesListAdapter extends RecyclerView.Adapter<RelatedCurrenciesListAdapter.CurrenciesViewHolder> {
 

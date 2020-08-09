@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.moringa.badilipesa.R;
 import com.moringa.badilipesa.adapters.RelatedCurrenciesListAdapter;
+import com.moringa.badilipesa.models.CurrencyPair;
 import com.moringa.badilipesa.models.RelatedCurrenciesApiResponse;
 import com.moringa.badilipesa.network.CurrencyExApi;
 import com.moringa.badilipesa.network.CurrencyExClient;
