@@ -13,16 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.moringa.badilipesa.R;
 import com.moringa.badilipesa.adapters.RelatedCurrenciesListAdapter;
-import com.moringa.badilipesa.models.Currency;
-import com.moringa.badilipesa.models.CurrencyPair;
 import com.moringa.badilipesa.models.RelatedCurrenciesApiResponse;
-import com.moringa.badilipesa.models.SupportedRatesResponse;
 import com.moringa.badilipesa.network.CurrencyExApi;
 import com.moringa.badilipesa.network.CurrencyExClient;
 import com.moringa.badilipesa.util.Constants;
 
 import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

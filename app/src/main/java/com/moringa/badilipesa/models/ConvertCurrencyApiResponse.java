@@ -3,23 +3,23 @@ package com.moringa.badilipesa.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class ConvertCurrencyApiResponse {
 
-    @SerializedName("success")
+    @SerializedName("amount")
     @Expose
-    private Boolean success;
-    @SerializedName("query")
+    private Double amount;
+    @SerializedName("base")
     @Expose
-    private Query query;
-    @SerializedName("info")
-    @Expose
-    private CurrencyInfo info;
+    private String base;
     @SerializedName("date")
     @Expose
     private String date;
-    @SerializedName("result")
+    @SerializedName("rates")
     @Expose
-    private Double result;
+    private Rates rates;
 
     /**
      * No args constructor for use in serialization
@@ -31,42 +31,32 @@ public class ConvertCurrencyApiResponse {
     /**
      *
      * @param date
-     * @param result
-     * @param success
-     * @param query
-     * @param info
+     * @param amount
+     * @param rates
+     * @param base
      */
-    public ConvertCurrencyApiResponse(Boolean success, Query query, CurrencyInfo info, String date, Double result) {
+    public ConvertCurrencyApiResponse(Double amount, String base, String date, Rates rates) {
         super();
-        this.success = success;
-        this.query = query;
-        this.info = info;
+        this.amount = amount;
+        this.base = base;
         this.date = date;
-        this.result = result;
+        this.rates = rates;
     }
 
-    public Boolean getSuccess() {
-        return success;
+    public Double getAmount() {
+        return amount;
     }
 
-    public void setSuccess(Boolean success) {
-        this.success = success;
+    public void setAmount(Double amount) {
+        this.amount = amount;
     }
 
-    public Query getQuery() {
-        return query;
+    public String getBase() {
+        return base;
     }
 
-    public void setQuery(Query query) {
-        this.query = query;
-    }
-
-    public CurrencyInfo getInfo() {
-        return info;
-    }
-
-    public void setInfo(CurrencyInfo info) {
-        this.info = info;
+    public void setBase(String base) {
+        this.base = base;
     }
 
     public String getDate() {
@@ -77,12 +67,12 @@ public class ConvertCurrencyApiResponse {
         this.date = date;
     }
 
-    public Double getResult() {
-        return result;
+    public Rates getRates() {
+        return rates;
     }
 
-    public void setResult(Double result) {
-        this.result = result;
+    public void setRates(Rates rates) {
+        this.rates = rates;
     }
 
 }
