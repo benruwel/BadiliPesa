@@ -1,6 +1,8 @@
 package com.moringa.badilipesa;
 import android.content.Intent;
-import android.widget.TextView;
+
+import com.moringa.badilipesa.ui.ConverterActivity;
+import com.moringa.badilipesa.ui.RelatedCurrenciesListActivity;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -12,12 +14,12 @@ import org.robolectric.shadows.ShadowActivity;
 import static org.junit.Assert.*;
 
 @RunWith(RobolectricTestRunner.class)
-public class CurrenciesActivityTest {
-    private CurrenciesActivity activity;
+public class RelatedCurrenciesListActivityTest {
+    private RelatedCurrenciesListActivity activity;
 
     @Before
     public void setup() {
-        activity = Robolectric.setupActivity(CurrenciesActivity.class);
+        activity = Robolectric.setupActivity(RelatedCurrenciesListActivity.class);
     }
 
     @Test

@@ -4,6 +4,8 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 
+import com.moringa.badilipesa.ui.ConverterActivity;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,14 +28,14 @@ public class ConverterActivityInstrumentedTest {
 
     @Test
     public void validateEditText() {
-        onView(withId(R.id.amountToConvert)).perform(typeText("500"))
+        onView(withId(R.id.toView)).perform(typeText("500"))
                 .check(matches(withText("500")));
     }
 
     @Test
     public void convertedAmountDisplayedCorrectly() {
         String amountToConvert = "500";
-        onView(withId(R.id.amountToConvert)).perform(typeText("500")).perform(closeSoftKeyboard());
+        onView(withId(R.id.toView)).perform(typeText("500")).perform(closeSoftKeyboard());
         try {
             Thread.sleep(250);
         } catch (InterruptedException e){
