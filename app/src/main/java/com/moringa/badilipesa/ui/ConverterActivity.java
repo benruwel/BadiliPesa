@@ -2,6 +2,7 @@ package com.moringa.badilipesa.ui;
 
 import android.os.Bundle;
 import android.text.Editable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,7 +40,7 @@ public class ConverterActivity extends AppCompatActivity implements View.OnClick
     @BindView(R.id.convertedAmount)
     TextView convertedAmountView;
 
-    public Rates convertedRate;
+    public static final String TAG = ConverterActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstance) {
@@ -62,15 +63,17 @@ public class ConverterActivity extends AppCompatActivity implements View.OnClick
                 @Override
                 public void onResponse(Call<ConvertCurrencyApiResponse> call, Response<ConvertCurrencyApiResponse> response) {
                     if(response.isSuccessful()) {
-                        amountToConvertView.setText(response.body().getAmount().toString());
-                        convertedRate = response.body().getRates();
-                        convertedAmountView.setText(convertedRate.getConvertedAmount().toString());
+                        String mock = "600";
+                        amountToConvertView.setText(mock);
+                        convertedAmountView.setText(response.body().getRates().getConvertedAmount().toString());
+                        Log.e(TAG, String.format("Amount is %s",response.body().getAmount().toString()));
+//                        convertedAmountView.setText(convertedRate.getConvertedAmount().toString());
                     }
                 }
 
                 @Override
                 public void onFailure(Call<ConvertCurrencyApiResponse> call, Throwable t) {
-
+                    Log.e(TAG,"onFailure", t);
                 }
             });
         }
