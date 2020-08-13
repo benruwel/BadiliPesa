@@ -11,26 +11,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.MainActivity" android:theme="@style/NoActionBarTheme">
+        <activity android:name=".ui.LoginActivity"></activity>
+        <activity
+            android:name=".ui.MainActivity"
+            android:theme="@style/NoActionBarTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".ui.RelatedCurrenciesListActivity" android:theme="@style/AppTheme">
+        <activity
+            android:name=".ui.RelatedCurrenciesListActivity"
+            android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.moringa.badilipesa.ui.MainActivity">
-            </meta-data>
+                android:value="com.moringa.badilipesa.ui.MainActivity"></meta-data>
         </activity>
-
-        <activity android:name=".ui.ConverterActivity" android:theme="@style/AppTheme">
+        <activity
+            android:name=".ui.ConverterActivity"
+            android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.moringa.badilipesa.ui.RelatedCurrenciesListActivity">
-            </meta-data>
+                android:value="com.moringa.badilipesa.ui.RelatedCurrenciesListActivity"></meta-data>
         </activity>
 
         <meta-data
