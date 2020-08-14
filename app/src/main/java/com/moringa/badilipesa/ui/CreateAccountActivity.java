@@ -2,6 +2,7 @@ package com.moringa.badilipesa.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.moringa.badilipesa.R;
 import android.os.Bundle;
 
 public class CreateAccountActivity extends AppCompatActivity {

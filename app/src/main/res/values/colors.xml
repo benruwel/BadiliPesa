@@ -6,4 +6,5 @@
     <color name="secondaryDark">#8B8CB2</color>
     <color name="secondaryLight">#FCFBFF</color>
     <color name="colorAccent">#FCA311</color>
+    <color name="colorScrollThumb">#6BFCA311</color>
 </resources>
