@@ -114,16 +114,17 @@
                 android:textSize="14sp"
                 android:layout_marginBottom="10dp"
                 android:textColor="@color/secondaryLight"
-                android:text="Username"/>
+                android:text="Email"/>
 
             <EditText
-                android:id="@+id/usernameInsertView"
+                android:inputType="textEmailAddress"
+                android:id="@+id/emailInsertLoginView"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:textSize="14sp"
                 android:background="@drawable/edit_text_background"
                 android:padding="10dp"
-                android:text="Enter your name" />
+                android:text="Enter your email" />
         </LinearLayout>
 
         <LinearLayout
@@ -139,14 +140,15 @@
                 android:textColor="@color/secondaryLight"
                 android:text="Password"/>
 
+
             <EditText
+                android:inputType="textPassword"
                 android:textSize="14sp"
                 android:id="@+id/passwordInsertView"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/edit_text_background"
-                android:padding="10dp"
-                android:text="Enter your password" />
+                android:padding="10dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -160,7 +162,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="Enter your name"
+                android:text="Log in"
                 android:padding="10dp"
                 android:textColor="@color/secondaryLight"
                 android:background="@drawable/primary_btn_background"/>
