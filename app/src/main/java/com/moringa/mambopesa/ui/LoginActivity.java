@@ -69,6 +69,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         String email = mEmailAddress.getText().toString().trim();
         String password = mPassword.getText().toString().trim();
 
+        //calling the form validation methods
+        boolean validEmail = isValidEmail(email);
+        boolean validPassword = isValidPassword(password);
+        if (!validEmail || !validPassword) return;
+
 //        mProgressDialog.show();
 
         firebaseAuth.signInWithEmailAndPassword(email, password)
@@ -85,6 +90,24 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         }
                     }
                 });
+    }
+
+    //form validation
+    private boolean isValidEmail(String email) {
+        boolean isGoodEmail =
+                (email != null && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches());
+        if (!isGoodEmail) {
+            mEmailAddress.setError("Please enter a valid email address");
+            return false;
+        }
+        return isGoodEmail;
+    }
+    private boolean isValidPassword(String password) {
+        if (password.equals("")) {
+            mPassword.setError("Password cannot be blank");
+            return false;
+        }
+        return true;
     }
 }
 
