@@ -48,7 +48,7 @@
                     android:background="@drawable/white_edit_text"
                     android:fontFamily="@font/poppins"
                     android:paddingStart="10dp"
-                    android:text="USD"
+                    android:hint="USD"
                     android:textColor="@color/secondaryDark"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -78,7 +78,7 @@
                         android:background="@drawable/white_edit_text"
                         android:fontFamily="@font/poppins"
                         android:paddingStart="10dp"
-                        android:text="KES"
+                        android:hint="KES"
                         android:textColor="@color/secondaryDark"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -106,6 +106,7 @@
                         android:layout_marginStart="10dp"
                         android:background="@drawable/white_edit_text"
                         android:fontFamily="@font/poppins"
+                        android:hint="500"
                         android:paddingStart="10dp"
                         android:textColor="@color/secondaryDark"
                         android:textSize="14sp" />
@@ -132,7 +133,7 @@
             android:src="@drawable/single_line"/>
 
         <androidx.core.widget.ContentLoadingProgressBar
-            android:id="@+id/progressBar"
+            android:id="@+id/converterProgressBar"
             style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
