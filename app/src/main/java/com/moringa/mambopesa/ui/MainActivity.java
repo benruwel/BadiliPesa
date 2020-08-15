@@ -6,19 +6,24 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
+import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.moringa.mambopesa.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @BindView(R.id.profileImage)
     ImageView mProfileImage;
+
+    private FirebaseAuth firebaseAuth;
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
@@ -53,10 +58,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 @Override
                 public boolean onMenuItemClick(MenuItem menuItem) {
                     //we use a switch statement to handle the diff events of the various menu items
-                    //TODO add logout logic
-                    return true;
+                    switch (menuItem.getItemId()) {
+                        case R.id.action_logout:
+                            logOutUser();
+                            return true;
+                        case R.id.action_profile:
+                            Toast.makeText(MainActivity.this, R.string.great_things, Toast.LENGTH_SHORT).show();
+                            return true;
+                        default:
+                            return false;
+                    }
                 }
             });
         }
+    }
+    //method to logout user current session
+    private void logOutUser() {
+        FirebaseAuth.getInstance().signOut();
+        //TODO change this to login activity after debugging
+        Intent intent = new Intent(MainActivity.this, CreateAccountActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
     }
 }
