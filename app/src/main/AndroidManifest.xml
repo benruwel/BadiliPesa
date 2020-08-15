@@ -11,10 +11,16 @@
         android:roundIcon="@drawable/icons8_dollar_euro_exchange_96"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".ui.CurrencyInfo">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.MainActivity" />
         </activity>
+
         <activity android:name=".ui.CreateAccountActivity">
         </activity>
+
         <activity android:name=".ui.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,20 +28,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.MainActivity"
-            android:theme="@style/NoActionBarTheme"></activity>
-        <activity
-            android:name=".ui.RelatedCurrenciesListActivity"
+
+        <activity android:name=".ui.MainActivity"
+            android:theme="@style/NoActionBarTheme"/>
+
+        <activity android:name=".ui.RelatedCurrenciesListActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.MainActivity" />
         </activity>
-        <activity
-            android:name=".ui.ConverterActivity"
-            android:theme="@style/AppTheme">
 
+        <activity android:name=".ui.ConverterActivity"
+            android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.MainActivity" />

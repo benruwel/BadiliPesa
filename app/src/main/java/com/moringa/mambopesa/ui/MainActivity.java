@@ -39,14 +39,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-//        if(view == mButtonLogin) {
-//            String username = mUsernameText.getText().toString();
-//            String currencySymbol = mCurrencySymbol.getText().toString();
-//            Intent intent = new Intent(MainActivity.this, RelatedCurrenciesListActivity.class);
-//            intent.putExtra("username", username);
-//            intent.putExtra("currencySymbol", currencySymbol);
-//            startActivity(intent);
-//        }
 
         if(view == mProfileImage) {
             PopupMenu popupMenu = new PopupMenu(MainActivity.this, mProfileImage);
@@ -76,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void logOutUser() {
         FirebaseAuth.getInstance().signOut();
         //TODO change this to login activity after debugging
-        Intent intent = new Intent(MainActivity.this, CreateAccountActivity.class);
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();

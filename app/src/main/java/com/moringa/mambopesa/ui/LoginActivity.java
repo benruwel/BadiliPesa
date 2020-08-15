@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.moringa.mambopesa.R;
 
 import butterknife.BindView;
@@ -33,6 +34,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @BindView(R.id.loginBtn)
     Button mLoginButton;
 
+    //auth listener to check the auth of the app at a given time
+    private FirebaseAuth.AuthStateListener mAuthListener;
     private FirebaseAuth firebaseAuth;
     private ProgressDialog mProgressDialog;
     private static final String TAG = LoginActivity.class.getSimpleName();
@@ -45,6 +48,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         //operations are performed in this one instance to prevent memory leaks
         firebaseAuth = FirebaseAuth.getInstance();
+        createAuthStateListener();
 
         //click listeners
         mLoginButton.setOnClickListener(this);
@@ -62,6 +66,39 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             startActivity(intent);
             finish();
         }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        firebaseAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mAuthListener != null) {
+            firebaseAuth.removeAuthStateListener(mAuthListener);
+        }
+    }
+
+    //auth state listener
+    private void createAuthStateListener() {
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    //if there exists an already authenticated account, the user is redirected to the main activity
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+
+        };
     }
 
     //login logic
@@ -91,6 +128,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     }
                 });
     }
+
+
 
     //form validation
     private boolean isValidEmail(String email) {
