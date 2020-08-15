@@ -7,7 +7,7 @@ import org.parceler.Parcel;
 
 @Parcel
 public class Rates {
-    @SerializedName("USD")
+    @SerializedName("convertedAmount")
     @Expose
     private Double convertedAmount;
 

@@ -1,6 +1,7 @@
 package com.moringa.mambopesa.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,7 +23,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @BindView(R.id.profileImage)
     ImageView mProfileImage;
-
+    @BindView(R.id.convertCurrencyCardView)
+    CardView mConvertCurrencyCardView;
     private FirebaseAuth firebaseAuth;
 
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -33,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-//        mButtonLogin.setOnClickListener(this);
+        mConvertCurrencyCardView.setOnClickListener(this);
         mProfileImage.setOnClickListener(this);
     }
 
@@ -62,6 +64,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 }
             });
+        }
+        if (view == mConvertCurrencyCardView) {
+            Intent intent = new Intent(MainActivity.this, ConverterActivity.class);
+            startActivity(intent);
         }
     }
     //method to logout user current session
