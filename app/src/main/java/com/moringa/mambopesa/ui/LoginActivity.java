@@ -50,6 +50,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         firebaseAuth = FirebaseAuth.getInstance();
         createAuthStateListener();
 
+        //start the progress dialog
+        createAuthProgressDialog();
         //click listeners
         mLoginButton.setOnClickListener(this);
         mCreateAccountText.setOnClickListener(this);
@@ -111,13 +113,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         boolean validPassword = isValidPassword(password);
         if (!validEmail || !validPassword) return;
 
-//        mProgressDialog.show();
+        mProgressDialog.show();
 
         firebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-//                        mProgressDialog.dismiss();
+                        mProgressDialog.dismiss();
                         if (task.isSuccessful()) {
                             Log.d(TAG, "Authentication successful");
 //                            createFirebaseUserProfile(task.getResult().getUser());
@@ -128,8 +130,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     }
                 });
     }
-
-
+    //progress dialog methods
+    private void createAuthProgressDialog() {
+        mProgressDialog = new ProgressDialog(this);
+        mProgressDialog.setMessage("Authenticating...");
+        mProgressDialog.setCancelable(false);
+    }
 
     //form validation
     private boolean isValidEmail(String email) {

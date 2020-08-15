@@ -291,7 +291,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:fontFamily="@font/poppins_bold"
-                                    android:text="Bugdet \n organizer"
+                                    android:text="Budget \n organizer"
                                     android:textAlignment="center"
                                     android:textColor="@color/secondaryDark"
                                     android:textSize="18sp" />
