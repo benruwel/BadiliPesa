@@ -59,6 +59,8 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         firebaseAuth = FirebaseAuth.getInstance();
         createAuthStateListener();
         mSignUpButton.setOnClickListener(this);
+        //start the progress dialog
+        createAuthProgressDialog();
     }
 
     @Override
@@ -96,13 +98,13 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         String password = mPassword.getText().toString().trim();
         String confirmPassword = mConfirmPassword.getText().toString().trim();
 
-//        mProgressAuthDialog.show();
+        mProgressAuthDialog.show();
         //parse users' info into the firebase auth api
         firebaseAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-//                        mProgressAuthDialog.dismiss();
+                        mProgressAuthDialog.dismiss();
                         if (task.isSuccessful()) {
                             Log.d(TAG, "Authentication successful");
                             createFirebaseUserProfile(task.getResult().getUser());
@@ -150,5 +152,12 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
                     }
 
                 });
+    }
+
+    //progress dialog methods
+    private void createAuthProgressDialog() {
+        mProgressAuthDialog = new ProgressDialog(this);
+        mProgressAuthDialog.setMessage("Authenticating with Firebase...");
+        mProgressAuthDialog.setCancelable(false);
     }
 }
