@@ -11,7 +11,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.moringa.badilipesa"
+        applicationId "com.moringa.mambopesa"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
