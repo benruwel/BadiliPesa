@@ -98,6 +98,12 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         String password = mPassword.getText().toString().trim();
         String confirmPassword = mConfirmPassword.getText().toString().trim();
 
+        //calling the form validation methods
+        boolean validEmail = isValidEmail(email);
+        boolean validName = isValidName(mUserName);
+        boolean validPassword = isValidPassword(password, confirmPassword);
+        if (!validEmail || !validName || !validPassword) return; //this return statements halts createNewUser method and errors are displayed
+
         mProgressAuthDialog.show();
         //parse users' info into the firebase auth api
         firebaseAuth.createUserWithEmailAndPassword(email, password)
@@ -157,7 +163,37 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
     //progress dialog methods
     private void createAuthProgressDialog() {
         mProgressAuthDialog = new ProgressDialog(this);
-        mProgressAuthDialog.setMessage("Authenticating with Firebase...");
+        mProgressAuthDialog.setMessage("Authenticating...");
         mProgressAuthDialog.setCancelable(false);
+    }
+
+    //form validation
+    private boolean isValidEmail(String email) {
+        boolean isGoodEmail =
+                (email != null && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches());
+        if (!isGoodEmail) {
+            mEmail.setError("Please enter a valid email address");
+            return false;
+        }
+        return isGoodEmail;
+    }
+
+    private boolean isValidName(String name) {
+        if (name.equals("")) {
+            mUsername.setError("Please enter your name");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean isValidPassword(String password, String confirmPassword) {
+        if (password.length() < 6) {
+            mPassword.setError("Please create a password containing at least 6 characters");
+            return false;
+        } else if (!password.equals(confirmPassword)) {
+            mConfirmPassword.setError("Passwords do not match");
+            return false;
+        }
+        return true;
     }
 }
