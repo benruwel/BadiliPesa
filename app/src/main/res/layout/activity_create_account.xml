@@ -63,9 +63,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:textSize="14sp"
+                    android:hint="Enter your name"
                     android:background="@drawable/edit_text_background"
-                    android:padding="10dp"
-                    android:text="Enter your name" />
+                    android:padding="10dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -89,7 +89,7 @@
                     android:layout_height="50dp"
                     android:background="@drawable/edit_text_background"
                     android:padding="10dp"
-                    android:text="Enter your email" />
+                    android:hint="Enter your email" />
             </LinearLayout>
 
             <LinearLayout

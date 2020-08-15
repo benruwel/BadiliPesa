@@ -58,12 +58,13 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         //operations are performed in this one instance to prevent memory leaks
         firebaseAuth = FirebaseAuth.getInstance();
         createAuthStateListener();
+        mSignUpButton.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         if (view == mSignUpButton) {
-
+            createNewUser();
         }
         if (view == mGoToLogin) {
             Intent intent = new Intent(CreateAccountActivity.this, LoginActivity.class);
@@ -95,13 +96,13 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         String password = mPassword.getText().toString().trim();
         String confirmPassword = mConfirmPassword.getText().toString().trim();
 
-        mProgressAuthDialog.show();
+//        mProgressAuthDialog.show();
         //parse users' info into the firebase auth api
         firebaseAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        mProgressAuthDialog.dismiss();
+//                        mProgressAuthDialog.dismiss();
                         if (task.isSuccessful()) {
                             Log.d(TAG, "Authentication successful");
                             createFirebaseUserProfile(task.getResult().getUser());
