@@ -58,7 +58,10 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         //operations are performed in this one instance to prevent memory leaks
         firebaseAuth = FirebaseAuth.getInstance();
         createAuthStateListener();
+        //click listeners
+        mGoToLogin.setOnClickListener(this);
         mSignUpButton.setOnClickListener(this);
+
         //start the progress dialog
         createAuthProgressDialog();
     }
