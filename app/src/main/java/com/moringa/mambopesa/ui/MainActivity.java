@@ -1,5 +1,6 @@
 package com.moringa.mambopesa.ui;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -14,9 +15,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.moringa.mambopesa.R;
 import com.moringa.mambopesa.models.CurrencyInfo;
 
@@ -30,8 +33,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     CardView mForexRates;
     @BindView(R.id.currencyInfoCardView)
     CardView mCurrencyInfo;
+    @BindView(R.id.welcomeMessage)
+    TextView mWelcomeMessage;
 
     private FirebaseAuth firebaseAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
@@ -45,6 +51,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mProfileImage.setOnClickListener(this);
         mForexRates.setOnClickListener(this);
         mCurrencyInfo.setOnClickListener(this);
+        //add the auth state listeners as soon as the activity starts
+        authStateListener();
     }
 
     @Override
@@ -86,6 +94,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(intent);
         }
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        firebaseAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mAuthListener != null) {
+            firebaseAuth.removeAuthStateListener(mAuthListener);
+        }
+    }
+
     //method to logout user current session
     private void logOutUser() {
         FirebaseAuth.getInstance().signOut();
@@ -94,5 +117,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
+    }
+
+    private void authStateListener() {
+        //get the user's firebase instance where we saved their name
+        firebaseAuth = FirebaseAuth.getInstance();
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    mWelcomeMessage.setText(String.format("Welcome, %s!", user.getDisplayName()));
+                } else {
+                    mWelcomeMessage.setText("Welcome, stranger!");
+                }
+            }
+        };
     }
 }
