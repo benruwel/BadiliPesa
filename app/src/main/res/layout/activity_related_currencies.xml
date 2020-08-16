@@ -15,10 +15,13 @@
             android:id="@+id/currencySymbolSearchView"
             android:layout_width="match_parent"
             android:layout_margin="20dp"
+            android:clickable="true"
+            android:focusableInTouchMode="true"
             app:queryHint="Search for KES"
             android:elevation="10dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/white_edit_text">
+            android:background="@drawable/white_edit_text"
+            android:focusable="true">
 
         </androidx.appcompat.widget.SearchView>
 
@@ -69,18 +72,19 @@
         android:scrollbars="horizontal"
         android:visibility="gone" />
 
-    <TextView
-        android:gravity="center"
-        android:id="@+id/errorTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_margin="16dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/errorTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_margin="16dp"
+            android:background="@drawable/error_bg"
+            android:fontFamily="@font/poppins"
+            android:gravity="center_horizontal"
+            android:padding="10dp"
+            android:textColor="@color/secondaryLight"
+            android:visibility="gone" />
 
         <ProgressBar
             android:visibility="gone"
