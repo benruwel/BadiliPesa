@@ -25,6 +25,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageView mProfileImage;
     @BindView(R.id.convertCurrencyCardView)
     CardView mConvertCurrencyCardView;
+    @BindView(R.id.ForexRatesCardView)
+    CardView mForexRates;
+
     private FirebaseAuth firebaseAuth;
 
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -67,6 +70,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         if (view == mConvertCurrencyCardView) {
             Intent intent = new Intent(MainActivity.this, ConverterActivity.class);
+            startActivity(intent);
+        }
+        if (view == mForexRates) {
+            Intent intent = new Intent(MainActivity.this, RelatedCurrenciesListActivity.class);
             startActivity(intent);
         }
     }

@@ -12,7 +12,7 @@ public interface ConversionApi {
     @GET("latest")
     Call<ConvertCurrencyApiResponse> getConversionResults(
             //specify the source amount to convert
-            @Query("amount") String amount,
+            @Query("amount") Integer amount,
             //specify the currency symbol to convert 'from' such as KES/USD/EUR
             @Query("from") String from,
             //specify the currency symbol to convert 'to' such as KES/USD/EUR

@@ -29,14 +29,13 @@ import retrofit2.Response;
 
 public class RelatedCurrenciesListActivity extends AppCompatActivity implements View.OnClickListener {
 
-    @BindView(R.id.usernameTextView)
-    TextView mUsernameTextView;
-
-    @BindView(R.id.convertViewButton)
-    Button mConvertViewButton;
 
     @BindView(R.id.recyclerView)
     RecyclerView mCurrenciesList;
+    @BindView(R.id.currencySymbolEditText)
+    RecyclerView mCurrencySymbol;
+    @BindView(R.id.currencySymbolSearchIcon)
+    RecyclerView mSearchIcon;
 
     @BindView(R.id.progressBar)
     ProgressBar mProgressBar;
@@ -54,17 +53,10 @@ public class RelatedCurrenciesListActivity extends AppCompatActivity implements 
         setContentView(R.layout.activity_related_currencies);
         ButterKnife.bind(this);
 
-        Intent intent = getIntent();
-        String username = intent.getStringExtra("username");
-        String currencySymbol = intent.getStringExtra("currencySymbol");
-        //display both username and currency symbol
-        mUsernameTextView.setText(String.format("Hello %s, here are the related currencies:%s", username, currencySymbol));
-        mConvertViewButton.setOnClickListener(this);
-
         //api calls
         CurrencyExApi client = CurrencyExClient.getClient();
         //we add the api key to the parameter according to the Api Docs
-        Call<RelatedCurrenciesApiResponse> call = client.getRelatedCurrencies(currencySymbol, Constants.FOREX_API_KEY);
+        Call<RelatedCurrenciesApiResponse> call = client.getRelatedCurrencies("KES", Constants.FOREX_API_KEY);
 
         call.enqueue(new Callback<RelatedCurrenciesApiResponse>() {
             @Override
@@ -80,7 +72,6 @@ public class RelatedCurrenciesListActivity extends AppCompatActivity implements 
 //                    mCurrenciesList.setHasFixedSize(true);
 
                     showCurrencies();
-                    showConvertViewButton();
                 } else {
                     showUnsuccessfulMessage();
                 }
@@ -107,19 +98,15 @@ public class RelatedCurrenciesListActivity extends AppCompatActivity implements 
         mCurrenciesList.setVisibility(View.VISIBLE);
     }
 
-    private void showConvertViewButton() {
-        mConvertViewButton.setVisibility(View.VISIBLE);
-    }
-
     private void hideProgressBar() {
         mProgressBar.setVisibility(View.GONE);
     }
 
     @Override
     public void onClick(View view) {
-        if(view == mConvertViewButton) {
-            Intent intent = new Intent(RelatedCurrenciesListActivity.this, ConverterActivity.class);
-            startActivity(intent);
-        }
+//        if(view == mConvertViewButton) {
+//            Intent intent = new Intent(RelatedCurrenciesListActivity.this, ConverterActivity.class);
+//            startActivity(intent);
+//        }
     }
 }

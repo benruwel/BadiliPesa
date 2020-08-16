@@ -119,6 +119,7 @@
                         </androidx.cardview.widget.CardView>
 
                         <androidx.cardview.widget.CardView
+                            android:id="@+id/ForexRatesCardView"
                             android:layout_width="100dp"
                             android:layout_height="200dp"
                             app:cardCornerRadius="5dp"
