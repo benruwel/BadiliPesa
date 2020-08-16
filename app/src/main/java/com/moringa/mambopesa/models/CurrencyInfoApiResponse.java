@@ -74,11 +74,11 @@ public class CurrencyInfoApiResponse {
         this.msg = msg;
     }
 
-    public List<CurrencyInfo> getResponse() {
+    public List<CurrencyInfo> getCurrencyInfo() {
         return response;
     }
 
-    public void setResponse(List<CurrencyInfo> response) {
+    public void setCurrencyInfo(List<CurrencyInfo> response) {
         this.response = response;
     }
 

@@ -1,5 +1,6 @@
 package com.moringa.mambopesa.network;
 
+import com.moringa.mambopesa.models.CurrencyInfoApiResponse;
 import com.moringa.mambopesa.models.RelatedCurrenciesApiResponse;
 
 import retrofit2.Call;
@@ -19,7 +20,7 @@ public interface CurrencyExApi {
     );
     //get profile info of currencies
     @GET("profile")
-    Call<RelatedCurrenciesApiResponse> getCurrencyInfo(
+    Call<CurrencyInfoApiResponse> getCurrencyInfo(
             //specify the source currency symbol such as KES/USD/EUR
             @Query("symbol") String symbol,
             //this api requires the api key to be present in the query params

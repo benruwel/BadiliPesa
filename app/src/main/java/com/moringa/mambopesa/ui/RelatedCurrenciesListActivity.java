@@ -86,14 +86,14 @@ public class RelatedCurrenciesListActivity extends AppCompatActivity implements 
     }
 
     //this method holds the logic to query our api and hold the responses
-    private void getRelatedCurrencies(String location) {
+    private void getRelatedCurrencies(String symbol) {
         //hide the currencies every time we try to query the api, better UI
         hideCurrencies();
         showProgressBar();
         //api calls
         CurrencyExApi client = CurrencyExClient.getClient();
         //we add the api key to the parameter according to the Api Docs
-        Call<RelatedCurrenciesApiResponse> call = client.getRelatedCurrencies(location, Constants.FOREX_API_KEY);
+        Call<RelatedCurrenciesApiResponse> call = client.getRelatedCurrencies(symbol, Constants.FOREX_API_KEY);
 
         call.enqueue(new Callback<RelatedCurrenciesApiResponse>() {
             @Override
