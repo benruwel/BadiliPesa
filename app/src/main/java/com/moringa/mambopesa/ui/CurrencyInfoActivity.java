@@ -18,6 +18,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import androidx.appcompat.widget.SearchView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -34,9 +35,10 @@ public class CurrencyInfoActivity extends AppCompatActivity {
     TextView mErrorText;
     @BindView(R.id.currencyInfoRecyclerView)
     RecyclerView mCurrencyInfo;
+    @BindView(R.id.currencyInfoSearchView)
+    SearchView mSearchView;
     @BindView(R.id.currencyInfoProgressBar)
     ProgressBar mProgressBar;
-
 
     private List<CurrencyInfo> mCurrencyInfoList;
     private CurrencyInfoListAdapter mAdapter;
@@ -48,7 +50,23 @@ public class CurrencyInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_currency_info);
         ButterKnife.bind(this);
 
-        getCurrencyInfo("USD");
+        searchQueryListener();
+    }
+
+    //search query listener
+    private void searchQueryListener() {
+        mSearchView.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                getCurrencyInfo(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
     }
 
     //gather the currency profile info from api

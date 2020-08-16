@@ -60,10 +60,6 @@ public class RelatedCurrenciesListActivity extends AppCompatActivity implements 
     }
     @Override
     public void onClick(View view) {
-//        if(view == mConvertViewButton) {
-//            Intent intent = new Intent(RelatedCurrenciesListActivity.this, ConverterActivity.class);
-//            startActivity(intent);
-//        }
     }
 
     private void searchQueryListener() {
