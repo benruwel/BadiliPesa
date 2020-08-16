@@ -170,6 +170,7 @@
                         android:orientation="horizontal">
 
                         <androidx.cardview.widget.CardView
+                            android:id="@+id/currencyInfoCardView"
                             android:layout_width="100dp"
                             android:layout_height="200dp"
                             android:layout_weight="1"
