@@ -98,7 +98,10 @@ public class RelatedCurrenciesListActivity extends AppCompatActivity implements 
             public void onResponse(Call<RelatedCurrenciesApiResponse> call, Response<RelatedCurrenciesApiResponse> response) {
                 hideProgressBar();
 
-                if(response.isSuccessful()) {
+                //looking for response.isSuccessfull won't cut it in the case where there is an unsupported string from the search query
+                //in this case the unsupported string will still ba parsed resulting in a Null object
+                //this api provides a status of the response which we use to verify that we get the correct response
+                if(response.isSuccessful() && response.body().getStatus()) {
                     mCurrencyPairs = response.body().getCurrencyPairs();
                     mAdapter = new RelatedCurrenciesListAdapter(mCurrencyPairs, RelatedCurrenciesListActivity.this);
                     mCurrenciesList.setAdapter(mAdapter);
@@ -107,6 +110,7 @@ public class RelatedCurrenciesListActivity extends AppCompatActivity implements 
 //                    mCurrenciesList.setHasFixedSize(true);
 
                     showCurrencies();
+
                 } else {
                     showUnsuccessfulMessage();
                 }
