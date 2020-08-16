@@ -36,6 +36,8 @@ public class ConverterActivity extends AppCompatActivity implements View.OnClick
     TextView mResults;
     @BindView(R.id.converterProgressBar)
     ProgressBar mProgressBar;
+    @BindView(R.id.errorTextView)
+    TextView mErrorTextView;
 
     private static final String TAG = ConverterActivity.class.getSimpleName();
 
@@ -81,13 +83,13 @@ public class ConverterActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void showFailureMessage() {
-        mResults.setText("Something went wrong. Please check your Internet connection and try again later");
-        mResults.setVisibility(View.VISIBLE);
+        mErrorTextView.setText("Something went wrong. Please check your Internet connection and try again later");
+        mErrorTextView.setVisibility(View.VISIBLE);
     }
 
     private void showUnsuccessfulMessage() {
-        mResults.setText("Something went wrong. Please try again later");
-        mResults.setVisibility(View.VISIBLE);
+        mErrorTextView.setText("Something went wrong. Please try again later");
+        mErrorTextView.setVisibility(View.VISIBLE);
     }
 
     private void showResults() {

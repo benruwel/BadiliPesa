@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E2E9E8">
+    android:background="@color/secondary">
 
     <LinearLayout
         android:paddingTop="25dp"
@@ -149,6 +149,18 @@
             android:background="@drawable/white_edit_text"
             android:text="Resutls:"
             android:textColor="@color/secondaryDark"
+            android:textSize="14sp"
+            android:layout_margin="20dp"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/errorTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:padding="10dp"
+            android:background="@drawable/error_bg"
+            android:textColor="@color/secondaryLight"
             android:textSize="14sp"
             android:layout_margin="20dp"
             android:visibility="gone"/>

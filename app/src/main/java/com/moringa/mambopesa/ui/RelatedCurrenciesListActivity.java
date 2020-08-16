@@ -71,7 +71,6 @@ public class RelatedCurrenciesListActivity extends AppCompatActivity implements 
     }
 
     private void searchQueryListener() {
-        showProgressBar();
         mCurrencySymbolSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -88,6 +87,9 @@ public class RelatedCurrenciesListActivity extends AppCompatActivity implements 
 
     //this method holds the logic to query our api and hold the responses
     private void getRelatedCurrencies(String location) {
+        //hide the currencies every time we try to query the api, better UI
+        hideCurrencies();
+        showProgressBar();
         //api calls
         CurrencyExApi client = CurrencyExClient.getClient();
         //we add the api key to the parameter according to the Api Docs
@@ -129,12 +131,15 @@ public class RelatedCurrenciesListActivity extends AppCompatActivity implements 
     }
 
     private void showUnsuccessfulMessage() {
-        mErrorTextView.setText("Something went wrong. Please try again later");
+        mErrorTextView.setText("Unsupported and/or invalid search term. Try USD, KES or JPN");
         mErrorTextView.setVisibility(View.VISIBLE);
     }
 
     private void showCurrencies() {
         mCurrenciesList.setVisibility(View.VISIBLE);
+    }
+    private void hideCurrencies() {
+        mCurrenciesList.setVisibility(View.GONE);
     }
 
     private void hideProgressBar() {
