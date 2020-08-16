@@ -7,7 +7,7 @@
 <br />
 <p align="center">
 <img src="https://img.icons8.com/plasticine/400/000000/currency-exchange.png" width="200" height="200"/>
-  <h3 align="center">BadiliPesa</h3>
+  <h3 align="center">MamboPesa</h3>
 
   <p align="center">
     One stop for everything currency conversion!
