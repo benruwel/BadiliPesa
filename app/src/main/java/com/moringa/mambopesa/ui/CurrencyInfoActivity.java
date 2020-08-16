@@ -25,20 +25,6 @@ import retrofit2.Response;
 
 public class CurrencyInfoActivity extends AppCompatActivity {
 
-    @BindView(R.id.currencyWebsite)
-    TextView mWebSite;
-    @BindView(R.id.currencyBank)
-    TextView mBank;
-    @BindView(R.id.currencyBankNotes)
-    TextView mBankNotes;
-    @BindView(R.id.currencyCountry)
-    TextView mCountry;
-    @BindView(R.id.currencyIcon)
-    ImageView mIcon;
-    @BindView(R.id.currencyShortName)
-    TextView mCurrencyShortName;
-    @BindView(R.id.currencyName)
-    TextView mCurrencyName;
     @BindView(R.id.errorTextView)
     TextView mErrorText;
 
