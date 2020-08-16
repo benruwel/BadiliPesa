@@ -10,6 +10,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -34,6 +35,8 @@ public class RelatedCurrenciesListActivity extends AppCompatActivity implements 
 
     @BindView(R.id.recyclerView)
     RecyclerView mCurrenciesList;
+    @BindView(R.id.currencySymbolSearchView)
+    SearchView mCurrencySymbolSearchView;
 //    @BindView(R.id.currencySymbolEditText)
 //    EditText mCurrencySymbol;
 //    @BindView(R.id.currencySymbolSearchIcon)
@@ -55,10 +58,40 @@ public class RelatedCurrenciesListActivity extends AppCompatActivity implements 
         setContentView(R.layout.activity_related_currencies);
         ButterKnife.bind(this);
 
+        //start the search view listeners when the activity starts
+        searchQueryListener();
+
+    }
+    @Override
+    public void onClick(View view) {
+//        if(view == mConvertViewButton) {
+//            Intent intent = new Intent(RelatedCurrenciesListActivity.this, ConverterActivity.class);
+//            startActivity(intent);
+//        }
+    }
+
+    private void searchQueryListener() {
+        showProgressBar();
+        mCurrencySymbolSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                getRelatedCurrencies(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+    }
+
+    //this method holds the logic to query our api and hold the responses
+    private void getRelatedCurrencies(String location) {
         //api calls
         CurrencyExApi client = CurrencyExClient.getClient();
         //we add the api key to the parameter according to the Api Docs
-        Call<RelatedCurrenciesApiResponse> call = client.getRelatedCurrencies("KES", Constants.FOREX_API_KEY);
+        Call<RelatedCurrenciesApiResponse> call = client.getRelatedCurrencies(location, Constants.FOREX_API_KEY);
 
         call.enqueue(new Callback<RelatedCurrenciesApiResponse>() {
             @Override
@@ -104,11 +137,7 @@ public class RelatedCurrenciesListActivity extends AppCompatActivity implements 
         mProgressBar.setVisibility(View.GONE);
     }
 
-    @Override
-    public void onClick(View view) {
-//        if(view == mConvertViewButton) {
-//            Intent intent = new Intent(RelatedCurrenciesListActivity.this, ConverterActivity.class);
-//            startActivity(intent);
-//        }
+    private void showProgressBar() {
+        mProgressBar.setVisibility(View.VISIBLE);
     }
 }
