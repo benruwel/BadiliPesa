@@ -17,6 +17,7 @@ import com.moringa.mambopesa.util.Constants;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.List;
@@ -33,6 +34,9 @@ public class CurrencyInfoActivity extends AppCompatActivity {
     TextView mErrorText;
     @BindView(R.id.currencyInfoRecyclerView)
     RecyclerView mCurrencyInfo;
+    @BindView(R.id.currencyInfoProgressBar)
+    ProgressBar mProgressBar;
+
 
     private List<CurrencyInfo> mCurrencyInfoList;
     private CurrencyInfoListAdapter mAdapter;
@@ -49,6 +53,9 @@ public class CurrencyInfoActivity extends AppCompatActivity {
 
     //gather the currency profile info from api
     private void getCurrencyInfo(String symbol) {
+        hideCurrencyInfo();
+        showProgressBar();
+
         CurrencyExApi client = CurrencyExClient.getClient();
         //api key is added as a parameter
         Call<CurrencyInfoApiResponse> call = client.getCurrencyInfo(symbol, Constants.FOREX_API_KEY);
@@ -57,6 +64,7 @@ public class CurrencyInfoActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<CurrencyInfoApiResponse> call, Response<CurrencyInfoApiResponse> response) {
 
+                hideProgressBar();
                 //looking for response.isSuccessfull won't cut it in the case where there is an unsupported string from the search query
                 //in this case the unsupported string will still ba parsed resulting in a Null object
                 //this api provides a status of the response which we use to verify that we get the correct response
@@ -68,7 +76,10 @@ public class CurrencyInfoActivity extends AppCompatActivity {
                     mCurrencyInfo.setLayoutManager(layoutManager);
                     mCurrencyInfo.setHasFixedSize(true);
 
+                    showCurrencyInfo();
+
                 } else {
+                    hideProgressBar();
                     showUnsuccessfulMessage();
                 }
             }
@@ -87,6 +98,21 @@ public class CurrencyInfoActivity extends AppCompatActivity {
     private void showUnsuccessfulMessage() {
         mErrorText.setText("Unsupported and/or invalid search term. Try USD, KES or JPN");
         mErrorText.setVisibility(View.VISIBLE);
+    }
+
+    private void showCurrencyInfo() {
+        mCurrencyInfo.setVisibility(View.VISIBLE);
+    }
+    private void hideCurrencyInfo() {
+        mCurrencyInfo.setVisibility(View.GONE);
+    }
+
+    private void hideProgressBar() {
+        mProgressBar.setVisibility(View.GONE);
+    }
+
+    private void showProgressBar() {
+        mProgressBar.setVisibility(View.VISIBLE);
     }
 }
 

@@ -37,10 +37,6 @@ public class RelatedCurrenciesListActivity extends AppCompatActivity implements 
     RecyclerView mCurrenciesList;
     @BindView(R.id.currencySymbolSearchView)
     SearchView mCurrencySymbolSearchView;
-//    @BindView(R.id.currencySymbolEditText)
-//    EditText mCurrencySymbol;
-//    @BindView(R.id.currencySymbolSearchIcon)
-//    ImageView mSearchIcon;
 
     @BindView(R.id.progressBar)
     ProgressBar mProgressBar;

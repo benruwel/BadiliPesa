@@ -1,6 +1,7 @@
 package com.moringa.mambopesa.adapters;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.moringa.mambopesa.R;
 import com.moringa.mambopesa.models.CurrencyInfo;
 import com.squareup.picasso.Picasso;
@@ -83,7 +85,10 @@ public class CurrencyInfoListAdapter extends RecyclerView.Adapter<CurrencyInfoLi
             mBankNotes.setText(String.format("Bank notes: %s",currencyInfo.getBanknotes()));
             mBank.setText(String.format("Bank: %s",currencyInfo.getBank()));
             mWebSite.setText(String.format("Website: %s",currencyInfo.getWebsite()));
-            Picasso.get().load(currencyInfo.getIcon()).into(mIcon);
+//            Glide.with(context).load(Uri.parse(currencyInfo.getIcon())).into(mIcon);
+//            GlideToVectorYou.justLoadImage(this, Uri.parse(currencyInfo.getIcon()) ,mIcon);
+            //TODO look for a lib that supports svgs
+            Picasso.get().load("https://img.icons8.com/flat_round/300/000000/error--v1.png").into(mIcon);
         }
     }
 }
