@@ -5,7 +5,7 @@ import com.moringa.mambopesa.R;
 
 import android.os.Bundle;
 
-public class CurrencyInfo extends AppCompatActivity {
+public class CurrencyInfoActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

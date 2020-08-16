@@ -4,7 +4,10 @@ package com.moringa.mambopesa.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Response {
+import org.parceler.Parcel;
+
+@Parcel
+public class CurrencyInfo {
 
     @SerializedName("short_name")
     @Expose
@@ -56,7 +59,7 @@ public class Response {
      * No args constructor for use in serialization
      * 
      */
-    public Response() {
+    public CurrencyInfo() {
     }
 
     /**
@@ -77,7 +80,7 @@ public class Response {
      * @param name
      * @param shortName
      */
-    public Response(String shortName, String name, String country, String codeN, String subunit, String website, String symbol, String bank, String banknotes, String coins, String icon, String type, String symbol2, String banknotes2, String coins2) {
+    public CurrencyInfo(String shortName, String name, String country, String codeN, String subunit, String website, String symbol, String bank, String banknotes, String coins, String icon, String type, String symbol2, String banknotes2, String coins2) {
         super();
         this.shortName = shortName;
         this.name = name;

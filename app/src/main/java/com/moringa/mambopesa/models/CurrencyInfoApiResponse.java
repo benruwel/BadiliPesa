@@ -5,6 +5,9 @@ import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class CurrencyInfoApiResponse {
 
     @SerializedName("status")
@@ -18,7 +21,7 @@ public class CurrencyInfoApiResponse {
     private String msg;
     @SerializedName("response")
     @Expose
-    private List<Response> response = null;
+    private List<CurrencyInfo> response = null;
     @SerializedName("info")
     @Expose
     private Info info;
@@ -38,7 +41,7 @@ public class CurrencyInfoApiResponse {
      * @param status
      * @param info
      */
-    public CurrencyInfoApiResponse(Boolean status, Integer code, String msg, List<Response> response, Info info) {
+    public CurrencyInfoApiResponse(Boolean status, Integer code, String msg, List<CurrencyInfo> response, Info info) {
         super();
         this.status = status;
         this.code = code;
@@ -71,11 +74,11 @@ public class CurrencyInfoApiResponse {
         this.msg = msg;
     }
 
-    public List<Response> getResponse() {
+    public List<CurrencyInfo> getResponse() {
         return response;
     }
 
-    public void setResponse(List<Response> response) {
+    public void setResponse(List<CurrencyInfo> response) {
         this.response = response;
     }
 

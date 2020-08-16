@@ -4,6 +4,9 @@ package com.moringa.mambopesa.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class Info {
 
     @SerializedName("server_time")
