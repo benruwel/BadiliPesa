@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -32,10 +34,10 @@ public class RelatedCurrenciesListActivity extends AppCompatActivity implements 
 
     @BindView(R.id.recyclerView)
     RecyclerView mCurrenciesList;
-    @BindView(R.id.currencySymbolEditText)
-    RecyclerView mCurrencySymbol;
-    @BindView(R.id.currencySymbolSearchIcon)
-    RecyclerView mSearchIcon;
+//    @BindView(R.id.currencySymbolEditText)
+//    EditText mCurrencySymbol;
+//    @BindView(R.id.currencySymbolSearchIcon)
+//    ImageView mSearchIcon;
 
     @BindView(R.id.progressBar)
     ProgressBar mProgressBar;

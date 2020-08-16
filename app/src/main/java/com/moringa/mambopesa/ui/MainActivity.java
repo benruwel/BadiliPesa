@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mConvertCurrencyCardView.setOnClickListener(this);
         mProfileImage.setOnClickListener(this);
+        mForexRates.setOnClickListener(this);
     }
 
     @Override
