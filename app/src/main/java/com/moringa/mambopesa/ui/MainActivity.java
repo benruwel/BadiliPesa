@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.moringa.mambopesa.R;
+import com.moringa.mambopesa.models.CurrencyInfo;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -27,6 +28,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     CardView mConvertCurrencyCardView;
     @BindView(R.id.ForexRatesCardView)
     CardView mForexRates;
+    @BindView(R.id.currencyInfoCardView)
+    CardView mCurrencyInfo;
 
     private FirebaseAuth firebaseAuth;
 
@@ -41,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mConvertCurrencyCardView.setOnClickListener(this);
         mProfileImage.setOnClickListener(this);
         mForexRates.setOnClickListener(this);
+        mCurrencyInfo.setOnClickListener(this);
     }
 
     @Override
@@ -75,6 +79,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         if (view == mForexRates) {
             Intent intent = new Intent(MainActivity.this, RelatedCurrenciesListActivity.class);
+            startActivity(intent);
+        }
+        if (view == mCurrencyInfo) {
+            Intent intent = new Intent(MainActivity.this, CurrencyInfoActivity.class);
             startActivity(intent);
         }
     }

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.moringa.mambopesa.R;
 import com.moringa.mambopesa.models.CurrencyInfo;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -28,7 +29,6 @@ public class CurrencyInfoListAdapter extends RecyclerView.Adapter<CurrencyInfoLi
         this.context = context;
     }
 
-    @NonNull
     @Override
     public CurrencyInfoListAdapter.CurrencyInfoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.currency_info_list_item, parent, false);
@@ -67,7 +67,7 @@ public class CurrencyInfoListAdapter extends RecyclerView.Adapter<CurrencyInfoLi
 
         public CurrencyInfoViewHolder(@NonNull View itemView) {
             super(itemView);
-            ButterKnife.bind(itemView);
+            ButterKnife.bind(this,itemView);
             context = itemView.getContext();
         }
 
@@ -83,6 +83,7 @@ public class CurrencyInfoListAdapter extends RecyclerView.Adapter<CurrencyInfoLi
             mBankNotes.setText(String.format("Bank notes: %s",currencyInfo.getBanknotes()));
             mBank.setText(String.format("Bank: %s",currencyInfo.getBank()));
             mWebSite.setText(String.format("Website: %s",currencyInfo.getWebsite()));
+            Picasso.get().load(currencyInfo.getIcon()).into(mIcon);
         }
     }
 }
