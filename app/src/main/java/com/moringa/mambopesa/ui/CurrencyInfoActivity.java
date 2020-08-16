@@ -5,7 +5,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.moringa.mambopesa.R;
+import com.moringa.mambopesa.adapters.CurrencyInfoListAdapter;
 import com.moringa.mambopesa.adapters.RelatedCurrenciesListAdapter;
+import com.moringa.mambopesa.models.CurrencyInfo;
 import com.moringa.mambopesa.models.CurrencyInfoApiResponse;
 import com.moringa.mambopesa.models.RelatedCurrenciesApiResponse;
 import com.moringa.mambopesa.network.CurrencyExApi;
@@ -17,6 +19,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import retrofit2.Call;
@@ -27,6 +31,11 @@ public class CurrencyInfoActivity extends AppCompatActivity {
 
     @BindView(R.id.errorTextView)
     TextView mErrorText;
+    @BindView(R.id.currencyInfoRecyclerView)
+    RecyclerView mCurrencyInfo;
+
+    private List<CurrencyInfo> mCurrencyInfoList;
+    private CurrencyInfoListAdapter mAdapter;
 
 
     @Override
@@ -34,6 +43,8 @@ public class CurrencyInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_currency_info);
         ButterKnife.bind(this);
+
+        getCurrencyInfo("USD");
     }
 
     //gather the currency profile info from api
@@ -50,7 +61,12 @@ public class CurrencyInfoActivity extends AppCompatActivity {
                 //in this case the unsupported string will still ba parsed resulting in a Null object
                 //this api provides a status of the response which we use to verify that we get the correct response
                 if(response.isSuccessful() && response.body().getStatus()) {
-
+                    mCurrencyInfoList = response.body().getCurrencyInfo();
+                    mAdapter = new CurrencyInfoListAdapter(mCurrencyInfoList, CurrencyInfoActivity.this);
+                    mCurrencyInfo.setAdapter(mAdapter);
+                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(CurrencyInfoActivity.this);
+                    mCurrencyInfo.setLayoutManager(layoutManager);
+                    mCurrencyInfo.setHasFixedSize(true);
 
                 } else {
                     showUnsuccessfulMessage();
