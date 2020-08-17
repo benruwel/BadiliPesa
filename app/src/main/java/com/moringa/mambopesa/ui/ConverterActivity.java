@@ -1,10 +1,12 @@
 package com.moringa.mambopesa.ui;
 
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -103,4 +105,5 @@ public class ConverterActivity extends AppCompatActivity implements View.OnClick
     private void showProgressBar() {
         mProgressBar.setVisibility(View.VISIBLE);
     }
+
 }

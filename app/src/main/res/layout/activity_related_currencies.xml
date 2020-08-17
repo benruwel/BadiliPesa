@@ -25,6 +25,15 @@
 
         </androidx.appcompat.widget.SearchView>
 
+        <ImageView
+            android:visibility="visible"
+            android:id="@+id/searchIllustration"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/undraw_the_search_s0xf"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:paddingTop="1.5dp"
         android:id="@+id/recyclerView"
@@ -34,20 +43,33 @@
         android:scrollbars="horizontal"
         android:visibility="gone" />
 
-        <TextView
-            android:id="@+id/errorTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center"
-            android:layout_margin="16dp"
-            android:textSize="12sp"
-            android:background="@drawable/error_bg"
-            android:fontFamily="@font/poppins"
-            android:gravity="center_horizontal"
-            android:padding="10dp"
-            android:textColor="@color/secondaryLight"
-            android:visibility="gone" />
+        <LinearLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:id="@+id/errorView">
+            <TextView
+                android:id="@+id/errorTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:layout_margin="16dp"
+                android:textSize="12sp"
+                android:background="@drawable/error_bg"
+                android:fontFamily="@font/poppins"
+                android:gravity="center_horizontal"
+                android:padding="10dp"
+                android:textColor="@color/secondaryLight" />
+            <ImageView
+                android:layout_margin="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/undraw_page_not_found_su7k"/>
+        </LinearLayout>
+
 
         <ProgressBar
             android:visibility="gone"
