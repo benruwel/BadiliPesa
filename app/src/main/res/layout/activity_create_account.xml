@@ -63,9 +63,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:textSize="14sp"
+                    android:hint="Enter your name"
                     android:background="@drawable/edit_text_background"
-                    android:padding="10dp"
-                    android:text="Enter your name" />
+                    android:padding="10dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -89,7 +89,7 @@
                     android:layout_height="50dp"
                     android:background="@drawable/edit_text_background"
                     android:padding="10dp"
-                    android:text="Enter your email" />
+                    android:hint="Enter your email" />
             </LinearLayout>
 
             <LinearLayout
@@ -144,6 +144,7 @@
                 android:padding="10dp"
                 android:orientation="vertical">
                 <Button
+                    android:id="@+id/signUpButton"
                     android:textAllCaps="false"
                     android:textSize="14sp"
                     android:layout_marginTop="20dp"
@@ -155,13 +156,14 @@
                     android:background="@drawable/primary_btn_background"/>
 
                 <TextView
+                    android:id="@+id/goToLoginActivity"
                     android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:textColor="@color/colorAccent"
                     android:textSize="14sp"
-                    android:text="Don't have an account? Sign up"/>
+                    android:text="Have an account?Log in"/>
             </LinearLayout>
 
 

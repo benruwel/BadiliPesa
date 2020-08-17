@@ -4,68 +4,59 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E2E9E8"
+    android:background="@color/colorPrimaryDark"
     tools:context=".ui.RelatedCurrenciesListActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/usernameTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="List of currencies"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/currencySymbolSearchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@drawable/white_edit_text"
+            android:clickable="true"
+            android:elevation="10dp"
+            android:focusable="true"
+            app:iconifiedByDefault="false"
+            app:queryHint="Search for KES">
+
+        </androidx.appcompat.widget.SearchView>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:paddingTop="1.5dp"
         android:id="@+id/recyclerView"
-        android:layout_width="0dp"
-        android:layout_height="450dp"
-        android:background="#1B000000"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_shape"
         android:scrollbars="horizontal"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usernameTextView" />
+        android:visibility="gone" />
 
-    <TextView
-        android:id="@+id/errorTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_margin="16dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/errorTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_margin="16dp"
+            android:textSize="12sp"
+            android:background="@drawable/error_bg"
+            android:fontFamily="@font/poppins"
+            android:gravity="center_horizontal"
+            android:padding="10dp"
+            android:textColor="@color/secondaryLight"
+            android:visibility="gone" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ProgressBar
+            android:visibility="gone"
+            android:layout_weight="2"
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" />
 
-    <Button
-        android:id="@+id/convertViewButton"
-        android:layout_width="250dp"
-        android:layout_height="45dp"
-        android:backgroundTint="@color/colorPrimary"
-        android:text="Convert"
-        android:textAllCaps="false"
-        android:textColor="#FDFDFD"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
-
-
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

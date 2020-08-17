@@ -1,42 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.moringa.badilipesa">
+    package="com.moringa.mambopesa">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/icons8_dollar_euro_exchange_96"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/icons8_dollar_euro_exchange_96"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.CurrencyInfo">
+
+        <activity android:name=".ui.CurrencyInfoActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.MainActivity" />
+        </activity>
+
+        <activity android:name=".ui.CreateAccountActivity">
+        </activity>
+
+        <activity android:name=".ui.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.CreateAccountActivity"></activity>
-        <activity android:name=".ui.LoginActivity"></activity>
-        <activity
-            android:name=".ui.MainActivity"
-            android:theme="@style/NoActionBarTheme"></activity>
-        <activity
-            android:name=".ui.RelatedCurrenciesListActivity"
-            android:theme="@style/AppTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.moringa.badilipesa.ui.MainActivity" />
-        </activity>
-        <activity
-            android:name=".ui.ConverterActivity"
-            android:theme="@style/AppTheme">
 
+        <activity android:name=".ui.MainActivity"
+            android:theme="@style/NoActionBarTheme"/>
+
+        <activity android:name=".ui.RelatedCurrenciesListActivity"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.moringa.badilipesa.ui.MainActivity" />
+                android:value=".ui.MainActivity" />
+        </activity>
+
+        <activity android:name=".ui.ConverterActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.MainActivity" />
         </activity>
 
         <meta-data

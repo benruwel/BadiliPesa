@@ -7,4 +7,6 @@
     <color name="secondaryLight">#FCFBFF</color>
     <color name="colorAccent">#FCA311</color>
     <color name="colorScrollThumb">#6BFCA311</color>
+    <color name="errorBg">#9D0208</color>
+    <color name="errorBgOutline">#370617</color>
 </resources>

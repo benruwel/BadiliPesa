@@ -124,7 +124,7 @@
                 android:textSize="14sp"
                 android:background="@drawable/edit_text_background"
                 android:padding="10dp"
-                android:text="Enter your email" />
+                android:hint="Enter your email" />
         </LinearLayout>
 
         <LinearLayout
@@ -157,6 +157,7 @@
             android:padding="10dp"
             android:orientation="vertical">
             <Button
+                android:id="@+id/loginBtn"
                 android:textAllCaps="false"
                 android:textSize="14sp"
                 android:layout_marginTop="20dp"
@@ -168,6 +169,7 @@
                 android:background="@drawable/primary_btn_background"/>
 
             <TextView
+                android:id="@+id/createAccountTextView"
                 android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

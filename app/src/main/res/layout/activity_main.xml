@@ -24,6 +24,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/welcomeMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -34,6 +35,7 @@
                 android:textSize="20sp" />
 
             <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/profileImage"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginEnd="10dp"
@@ -42,6 +44,7 @@
         </LinearLayout>
 
         <TextView
+            android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -52,11 +55,14 @@
             android:textColor="@color/colorAccent"
             android:textSize="14sp" />
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:background="@drawable/bg_shape"
+            android:layout_height="wrap_content">
             <ScrollView
-                android:background="@drawable/bg_shape"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="2dp"
                 android:fadingEdgeLength="10dp">
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -69,6 +75,7 @@
                         android:orientation="horizontal">
                         
                         <androidx.cardview.widget.CardView
+                            android:id="@+id/convertCurrencyCardView"
                             android:layout_width="100dp"
                             android:layout_height="200dp"
                             android:layout_weight="1"
@@ -113,6 +120,7 @@
                         </androidx.cardview.widget.CardView>
 
                         <androidx.cardview.widget.CardView
+                            android:id="@+id/ForexRatesCardView"
                             android:layout_width="100dp"
                             android:layout_height="200dp"
                             app:cardCornerRadius="5dp"
@@ -163,6 +171,7 @@
                         android:orientation="horizontal">
 
                         <androidx.cardview.widget.CardView
+                            android:id="@+id/currencyInfoCardView"
                             android:layout_width="100dp"
                             android:layout_height="200dp"
                             android:layout_weight="1"
@@ -290,7 +299,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:fontFamily="@font/poppins_bold"
-                                    android:text="Bugdet \n organizer"
+                                    android:text="Budget \n organizer"
                                     android:textAlignment="center"
                                     android:textColor="@color/secondaryDark"
                                     android:textSize="18sp" />
@@ -346,6 +355,7 @@
                     
                 </LinearLayout>
             </ScrollView>
+        </RelativeLayout>
     </LinearLayout>
 
 
