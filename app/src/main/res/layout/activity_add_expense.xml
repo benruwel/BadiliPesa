@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    tools:context=".ui.AddExpenseActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="40dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:paddingBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:paddingBottom="10dp"
+                android:text="Name of expense:"
+                android:textAlignment="textStart"
+                android:textColor="@color/secondaryLight" />
+
+        <EditText
+            android:id="@+id/nameOfExpense"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit_text_background"
+            android:fontFamily="@font/poppins"
+            android:hint="Fuel"
+            android:inputType="text"
+            android:padding="10dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:paddingBottom="10dp"
+                android:text="Amount you spent:"
+                android:textAlignment="textStart"
+                android:textColor="@color/secondaryLight" />
+
+            <EditText
+                android:id="@+id/amountOfExpense"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/edit_text_background"
+                android:fontFamily="@font/poppins"
+                android:hint="55.90"
+                android:inputType="number"
+                android:padding="10dp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/submitNewExpense"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/primary_btn_background"
+            android:fontFamily="@font/poppins"
+            android:text="Go"
+            android:textAllCaps="false"
+            android:textColor="@color/secondaryLight" />
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

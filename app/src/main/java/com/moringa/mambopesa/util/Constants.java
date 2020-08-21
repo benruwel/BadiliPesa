@@ -8,4 +8,6 @@ public class Constants {
     public static final String FOREX_API_KEY =  BuildConfig.FOREX_API_KEY;
     //used diff api for currency conversion, no api key required
     public static final String CONVERSION_BASE_URL = "https://api.frankfurter.app/";
+    //database child node name
+    public static final String FIREBASE_CHILD_BUDGET_PLANNER = "budgetPlanner";
 }
