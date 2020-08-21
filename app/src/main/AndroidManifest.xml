@@ -11,7 +11,8 @@
         android:roundIcon="@drawable/icons8_dollar_euro_exchange_96"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.BudgetList"></activity>
+        <activity android:name=".ui.AddExpenseActivity"></activity>
+        <activity android:name=".ui.BudgetListActivity" />
         <activity android:name=".ui.CreateBudget" />
         <activity android:name=".ui.CurrencyInfoActivity">
             <meta-data
