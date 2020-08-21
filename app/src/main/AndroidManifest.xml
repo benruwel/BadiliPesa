@@ -11,8 +11,14 @@
         android:roundIcon="@drawable/icons8_dollar_euro_exchange_96"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.AddExpenseActivity"></activity>
-        <activity android:name=".ui.BudgetListActivity" />
+        <activity android:name=".ui.AddExpenseActivity"/>
+        <activity android:name=".ui.BudgetListActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".ui.CreateBudget" />
         <activity android:name=".ui.CurrencyInfoActivity">
             <meta-data
@@ -21,11 +27,6 @@
         </activity>
         <activity android:name=".ui.CreateAccountActivity" />
         <activity android:name=".ui.LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ui.MainActivity"
