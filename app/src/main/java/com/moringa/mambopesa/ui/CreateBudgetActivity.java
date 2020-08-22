@@ -10,12 +10,14 @@ import com.moringa.mambopesa.R;
 import com.moringa.mambopesa.models.Budget;
 import com.moringa.mambopesa.util.Constants;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class CreateBudgetActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -33,6 +35,7 @@ public class CreateBudgetActivity extends AppCompatActivity implements View.OnCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_budget);
+        ButterKnife.bind(this);
 
         //get the user's uid
         user = FirebaseAuth.getInstance().getCurrentUser();
@@ -46,9 +49,10 @@ public class CreateBudgetActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onClick(View view) {
         if(view == mSubmitBudget){
+            Intent intent = new Intent(CreateBudgetActivity.this, BudgetListActivity.class);
             int allocatedBudget = Integer.parseInt(mAmountToBudget.getText().toString().trim());
-
             saveBudgetToFirebase(allocatedBudget);
+            startActivity(intent);
         }
     }
 

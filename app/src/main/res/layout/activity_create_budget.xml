@@ -83,7 +83,7 @@
             android:text="This is still in its beta stage"
             android:textAlignment="center"
             android:textColor="@color/colorAccent"
-            android:textSize="14sp" />
+            android:textSize="12sp" />
 
 
     </LinearLayout>
