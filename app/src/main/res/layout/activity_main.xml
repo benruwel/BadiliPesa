@@ -76,6 +76,7 @@
                         android:orientation="horizontal">
 
                         <androidx.cardview.widget.CardView
+                            android:id="@+id/budgetPlannerCardView"
                             android:layout_width="wrap_content"
                             android:layout_height="200dp"
                             app:cardCornerRadius="5dp"

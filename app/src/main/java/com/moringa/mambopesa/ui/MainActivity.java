@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     CardView mForexRates;
     @BindView(R.id.currencyInfoCardView)
     CardView mCurrencyInfo;
+    @BindView(R.id.budgetPlannerCardView)
+    CardView mBudgetPlanner;
     @BindView(R.id.welcomeMessage)
     TextView mWelcomeMessage;
 
@@ -51,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mProfileImage.setOnClickListener(this);
         mForexRates.setOnClickListener(this);
         mCurrencyInfo.setOnClickListener(this);
+        mBudgetPlanner.setOnClickListener(this);
         //add the auth state listeners as soon as the activity starts
         authStateListener();
     }
@@ -91,6 +94,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         if (view == mCurrencyInfo) {
             Intent intent = new Intent(MainActivity.this, CurrencyInfoActivity.class);
+            startActivity(intent);
+        }
+        if (view == mBudgetPlanner) {
+            Intent intent = new Intent(MainActivity.this, CreateBudgetActivity.class);
             startActivity(intent);
         }
     }
