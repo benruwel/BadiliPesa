@@ -10,7 +10,7 @@
   <h3 align="center">MamboPesa</h3>
 
   <p align="center">
-    One stop for everything currency conversion!
+    Money talk, basically.
 </p>
 <p align="center">Ben Ruwel</p>
 
