@@ -131,11 +131,6 @@
 
                 </LinearLayout>
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:src="@drawable/single_line"/>
-
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 

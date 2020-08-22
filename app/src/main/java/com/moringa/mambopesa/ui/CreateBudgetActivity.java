@@ -5,7 +5,7 @@ import com.moringa.mambopesa.R;
 
 import android.os.Bundle;
 
-public class CreateBudget extends AppCompatActivity {
+public class CreateBudgetActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
