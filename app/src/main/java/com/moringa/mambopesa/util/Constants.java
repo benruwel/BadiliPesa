@@ -10,4 +10,5 @@ public class Constants {
     public static final String CONVERSION_BASE_URL = "https://api.frankfurter.app/";
     //database child node name
     public static final String FIREBASE_CHILD_BUDGET_PLANNER = "budgetPlanner";
+    public static final String FIREBASE_CHILD_ALLOCATED_BUDGET = "allocatedBudget";
 }

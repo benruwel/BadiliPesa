@@ -4,41 +4,41 @@ import java.util.List;
 
 public class Budget {
 
-    public Double allocatedBudget;
-    public Double totalExpenses;
-    public Double balance;
+    public int allocatedBudget;
+    public int totalExpenses;
+    public int balance;
     public List<Expense> expenseList;
 
     public Budget(){}
 
-    public Budget(Double allocatedBudget, Double totalExpenses, Double balance, List<Expense> expenseList) {
+    public Budget(int allocatedBudget, int totalExpenses, int balance, List<Expense> expenseList) {
         this.allocatedBudget = allocatedBudget;
         this.totalExpenses = totalExpenses;
         this.balance = balance;
         this.expenseList = expenseList;
     }
 
-    public Double getAllocatedBudget() {
+    public int getAllocatedBudget() {
         return allocatedBudget;
     }
 
-    public void setAllocatedBudget(Double allocatedBudget) {
+    public void setAllocatedBudget(int allocatedBudget) {
         this.allocatedBudget = allocatedBudget;
     }
 
-    public Double getTotalExpenses() {
+    public int getTotalExpenses() {
         return totalExpenses;
     }
 
-    public void setTotalExpenses(Double totalExpenses) {
+    public void setTotalExpenses(int totalExpenses) {
         this.totalExpenses = totalExpenses;
     }
 
-    public Double getBalance() {
+    public int getBalance() {
         return balance;
     }
 
-    public void setBalance(Double balance) {
+    public void setBalance(int balance) {
         this.balance = balance;
     }
 

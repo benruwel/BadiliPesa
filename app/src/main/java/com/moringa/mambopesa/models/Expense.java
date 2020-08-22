@@ -4,6 +4,7 @@ public class Expense {
 
     String name;
     Double price;
+    private String pushId;
 
     public Expense(String name, Double price) {
         this.name = name;
@@ -25,5 +26,12 @@ public class Expense {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+    public String getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
     }
 }
