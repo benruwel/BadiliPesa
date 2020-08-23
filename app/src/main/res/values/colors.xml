@@ -9,4 +9,6 @@
     <color name="colorScrollThumb">#6BFCA311</color>
     <color name="errorBg">#9D0208</color>
     <color name="errorBgOutline">#370617</color>
+    <color name="green">#548c2f</color>
+    <color name="darkGreen">#104911</color>
 </resources>

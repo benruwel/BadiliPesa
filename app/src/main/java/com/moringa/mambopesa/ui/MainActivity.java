@@ -20,8 +20,14 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.moringa.mambopesa.R;
 import com.moringa.mambopesa.models.CurrencyInfo;
+import com.moringa.mambopesa.util.Constants;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -33,11 +39,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     CardView mForexRates;
     @BindView(R.id.currencyInfoCardView)
     CardView mCurrencyInfo;
+    @BindView(R.id.budgetPlannerCardView)
+    CardView mBudgetPlanner;
     @BindView(R.id.welcomeMessage)
     TextView mWelcomeMessage;
 
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private DatabaseReference databaseReference;
+    private String allocatedBudget;
+    private ValueEventListener budgetListener;
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
@@ -51,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mProfileImage.setOnClickListener(this);
         mForexRates.setOnClickListener(this);
         mCurrencyInfo.setOnClickListener(this);
+        mBudgetPlanner.setOnClickListener(this);
         //add the auth state listeners as soon as the activity starts
         authStateListener();
     }
@@ -93,6 +105,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent intent = new Intent(MainActivity.this, CurrencyInfoActivity.class);
             startActivity(intent);
         }
+        if (view == mBudgetPlanner) {
+            checkExistingBudgetInstance();
+            Intent createBudgetIntent = new Intent(MainActivity.this, CreateBudgetActivity.class);
+            Intent budgetListIntent = new Intent(MainActivity.this, BudgetListActivity.class);
+            databaseReference = FirebaseDatabase.getInstance().getReference()
+                    .child(Constants.FIREBASE_CHILD_BUDGET_PLANNER)
+                    .child(Constants.FIREBASE_CHILD_ALLOCATED_BUDGET);
+
+            databaseReference.addValueEventListener(budgetListener);
+            if (allocatedBudget != null) {
+                startActivity(budgetListIntent);
+            } else {
+                startActivity(createBudgetIntent);
+            }
+        }
     }
 
     @Override
@@ -112,7 +139,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //method to logout user current session
     private void logOutUser() {
         FirebaseAuth.getInstance().signOut();
-        //TODO change this to login activity after debugging
+
         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
@@ -131,6 +158,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 } else {
                     mWelcomeMessage.setText("Welcome, stranger!");
                 }
+            }
+        };
+    }
+
+    private void checkExistingBudgetInstance() {
+         budgetListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                allocatedBudget = snapshot.getValue().toString();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e(TAG, "loadAllocatedBudget failed", error.toException());
             }
         };
     }

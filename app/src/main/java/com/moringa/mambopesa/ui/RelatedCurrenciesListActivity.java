@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -43,6 +44,11 @@ public class RelatedCurrenciesListActivity extends AppCompatActivity implements 
 
     @BindView(R.id.errorTextView)
     TextView mErrorTextView;
+    @BindView(R.id.searchIllustration)
+    ImageView mSearchIllustration;
+    @BindView(R.id.errorView)
+    LinearLayout mErrorView;
+
 
     private RelatedCurrenciesListAdapter mAdapter;
     //create a list variable to hold all the currency pairs from the api call
@@ -81,6 +87,7 @@ public class RelatedCurrenciesListActivity extends AppCompatActivity implements 
     private void getRelatedCurrencies(String symbol) {
         //hide the currencies every time we try to query the api, better UI
         hideCurrencies();
+        hideIllustration();
         showProgressBar();
         //api calls
         CurrencyExApi client = CurrencyExClient.getClient();
@@ -90,6 +97,7 @@ public class RelatedCurrenciesListActivity extends AppCompatActivity implements 
         call.enqueue(new Callback<RelatedCurrenciesApiResponse>() {
             @Override
             public void onResponse(Call<RelatedCurrenciesApiResponse> call, Response<RelatedCurrenciesApiResponse> response) {
+                hideErrorView();
                 hideProgressBar();
 
                 //looking for response.isSuccessfull won't cut it in the case where there is an unsupported string from the search query
@@ -119,12 +127,12 @@ public class RelatedCurrenciesListActivity extends AppCompatActivity implements 
 
     private void showFailureMessage() {
         mErrorTextView.setText("Something went wrong. Please check your Internet connection and try again later");
-        mErrorTextView.setVisibility(View.VISIBLE);
+        showErrorView();
     }
 
     private void showUnsuccessfulMessage() {
         mErrorTextView.setText("Unsupported and/or invalid search term. Try USD, KES or JPN");
-        mErrorTextView.setVisibility(View.VISIBLE);
+        showErrorView();
     }
 
     private void showCurrencies() {
@@ -141,4 +149,17 @@ public class RelatedCurrenciesListActivity extends AppCompatActivity implements 
     private void showProgressBar() {
         mProgressBar.setVisibility(View.VISIBLE);
     }
+
+    private void hideIllustration() {
+        mSearchIllustration.setVisibility(View.GONE);
+    }
+
+    private void showErrorView() {
+        mErrorView.setVisibility(View.VISIBLE);
+    }
+
+    private void hideErrorView() {
+        mErrorView.setVisibility(View.GONE);
+    }
+
 }
