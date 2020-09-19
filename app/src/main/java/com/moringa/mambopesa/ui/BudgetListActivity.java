@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -28,6 +29,8 @@ public class BudgetListActivity extends AppCompatActivity {
 
     @BindView(R.id.expensesRecyclerView)
     RecyclerView expensesRecyclerView;
+    @BindView(R.id.noItemsTextView)
+    TextView mNoItems;
 
     private DatabaseReference mBudgetReference;
     private FirebaseUser user;
@@ -68,6 +71,7 @@ public class BudgetListActivity extends AppCompatActivity {
 
         expensesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         expensesRecyclerView.setAdapter(mFirebaseAdapter);
+        showRecyclerView();
     }
 
     @Override
@@ -82,5 +86,12 @@ public class BudgetListActivity extends AppCompatActivity {
         if(mFirebaseAdapter != null) {
             mFirebaseAdapter.stopListening();
         }
+    }
+
+    private void showRecyclerView() {
+        expensesRecyclerView.setVisibility(View.VISIBLE);
+    }
+    private void hideNoItemsText() {
+        mNoItems.setVisibility(View.GONE);
     }
 }

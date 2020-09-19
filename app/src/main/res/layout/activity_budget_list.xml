@@ -145,7 +145,6 @@
             android:background="@drawable/bg_shape"/>
 
         <TextView
-            android:visibility="gone"
             android:layout_gravity="center"
             android:fontFamily="@font/poppins"
             android:textSize="12sp"
