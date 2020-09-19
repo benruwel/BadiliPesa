@@ -8,6 +8,7 @@
     tools:context=".ui.BudgetListActivity">
 
     <LinearLayout
+        android:id="@+id/bugetLL"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -19,17 +20,19 @@
             android:padding="20dp"
             app:cardCornerRadius="10dp"
             app:cardBackgroundColor="@color/secondary">
+
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="372dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <LinearLayout
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_gravity="start"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -59,15 +62,15 @@
                     android:layout_height="1dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
-                    android:src="@drawable/single_line"/>
+                    android:src="@drawable/single_line" />
 
                 <LinearLayout
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_gravity="start"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -94,19 +97,19 @@
 
                 <ImageView
                     android:layout_width="match_parent"
+                    android:layout_height="1dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
-                    android:layout_height="1dp"
-                    android:src="@drawable/single_line"/>
+                    android:src="@drawable/single_line" />
 
                 <LinearLayout
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_gravity="start"
-                    android:layout_marginBottom="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="10dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -134,34 +137,48 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+            android:visibility="gone"
+            android:id="@+id/expensesRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/bg_shape"/>
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/addExpenseFab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@id/recyclerView"
-                android:background="?android:attr/selectableItemBackground"
-                android:clickable="true"
-                android:focusable="true"
-                app:pressedTranslationZ="20dp"
-                android:layout_alignEnd="@id/recyclerView"
-                android:layout_margin="20dp"
-                android:contentDescription="add expense"
-                android:elevation="10dp"
-                android:src="@drawable/baseline_add_white_24"
-                app:rippleColor="@color/colorScrollThumb" />
+        <TextView
+            android:visibility="gone"
+            android:layout_gravity="center"
+            android:fontFamily="@font/poppins"
+            android:textSize="12sp"
+            android:textColor="@color/secondaryDark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/noItemsTextView"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:padding="10dp"
+            android:textAlignment="center"
+            android:background="@drawable/white_edit_text"
+            android:text="No items in your budget list\n Add items"/>
 
-        </RelativeLayout>
+
 
     </LinearLayout>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addExpenseFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@id/bugetLL"
+        android:layout_alignBottom="@id/bugetLL"
+        android:layout_margin="20dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:contentDescription="add expense"
+        android:elevation="10dp"
+        android:focusable="true"
+        android:src="@drawable/baseline_add_white_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:pressedTranslationZ="20dp"
+        app:rippleColor="@color/colorScrollThumb" />
 </androidx.constraintlayout.widget.ConstraintLayout>
