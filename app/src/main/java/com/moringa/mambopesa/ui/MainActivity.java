@@ -26,6 +26,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.moringa.mambopesa.R;
+import com.moringa.mambopesa.models.Budget;
 import com.moringa.mambopesa.models.CurrencyInfo;
 import com.moringa.mambopesa.util.Constants;
 
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference databaseReference;
     private String allocatedBudget;
+    private boolean existingBudget;
     private ValueEventListener budgetListener;
 
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -110,11 +112,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent createBudgetIntent = new Intent(MainActivity.this, CreateBudgetActivity.class);
             Intent budgetListIntent = new Intent(MainActivity.this, BudgetListActivity.class);
             databaseReference = FirebaseDatabase.getInstance().getReference()
-                    .child(Constants.FIREBASE_CHILD_BUDGET_PLANNER)
-                    .child(Constants.FIREBASE_CHILD_ALLOCATED_BUDGET);
+                    .child(Constants.FIREBASE_CHILD_BUDGET_PLANNER);
 
             databaseReference.addValueEventListener(budgetListener);
-            if (allocatedBudget != null) {
+            if (existingBudget) {
                 startActivity(budgetListIntent);
             } else {
                 startActivity(createBudgetIntent);
@@ -166,7 +167,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
          budgetListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                allocatedBudget = snapshot.getValue().toString();
+                //check if there is data in the db
+                existingBudget = snapshot.exists();
             }
 
             @Override
